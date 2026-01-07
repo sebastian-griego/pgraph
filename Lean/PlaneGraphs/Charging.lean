@@ -137,3 +137,30 @@ lemma avgIso_le_deg34_of_split {n : ℕ} (P : PointSet n) {v3 v4 vlarge : ℚ}
   exact le_trans havg hbound
 
 end PlaneGraphs
+
+namespace PlaneGraphs
+
+def K_deg56_sample : ℚ :=
+  (deg56SampleCertificate.getQ? "K_deg56").getD 0
+
+def w3_sample : ℚ := (deg56SampleCertificate.getQ? "w3").getD 0
+def w4_sample : ℚ := (deg56SampleCertificate.getQ? "w4").getD 0
+def w5_sample : ℚ := (deg56SampleCertificate.getQ? "w5").getD 0
+def w6_sample : ℚ := (deg56SampleCertificate.getQ? "w6").getD 0
+def wL_sample : ℚ := (deg56SampleCertificate.getQ? "wL").getD 0
+
+lemma K_deg56_sample_pos : 0 < K_deg56_sample := by
+  simp [K_deg56_sample, deg56SampleCertificate_getQ_K_deg56]
+
+lemma avgIso_le_deg56_of_split {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vlarge : ℚ}
+    (havg :
+      avgIso P ≤ v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+        v6 * w6_sample + vlarge * wL_sample)
+    (hbound :
+      v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+        v6 * w6_sample + vlarge * wL_sample ≤ (n : ℚ) / K_deg56_sample) :
+    avgIso P ≤ (n : ℚ) / K_deg56_sample := by
+  exact le_trans havg hbound
+
+end PlaneGraphs

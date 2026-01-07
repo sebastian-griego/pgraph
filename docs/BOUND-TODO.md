@@ -82,6 +82,7 @@ Helper tooling
   Example file:
 
   docs/lp/deg34.json
+  docs/lp/deg56.json
 
 - `scripts/mine_degree_vectors.py` enumerates triangulations for sampled point
   sets and writes degree vectors to JSON. This is the data source for refining
@@ -92,3 +93,5 @@ Helper tooling
 - `scripts/solve_rational.py` runs a float LP and then computes the exact
   rational K for the mined vectors, emitting the command to generate a JSON
   certificate.
+- `certificates/deg56_sample.json` is a data-driven sample certificate created
+  from mined vectors; it is not a proven bound yet.

@@ -74,6 +74,9 @@ syntax (name := loadCertificate) "load_certificate " str : term
 def exampleCertificate : Certificate :=
   load_certificate "certificates/example.json"
 
+def deg56SampleCertificate : Certificate :=
+  load_certificate "certificates/deg56_sample.json"
+
 lemma exampleCertificate_constants :
     exampleCertificate.constants =
       [("K_12_15", 243, 20), ("K_23_32", 583, 25), ("K_deg34", 112, 11)] := by
@@ -89,6 +92,36 @@ lemma exampleCertificate_getQ_23_32 :
 
 lemma exampleCertificate_getQ_deg34 :
     exampleCertificate.getQ? "K_deg34" = some (112 / 11 : ℚ) := by
+  rfl
+
+lemma deg56SampleCertificate_constants :
+    deg56SampleCertificate.constants =
+      [("K_deg56", 96, 7), ("w3", 1, 8), ("w4", 1, 16), ("w5", 1, 32),
+        ("w6", 1, 64), ("wL", 1, 128)] := by
+  rfl
+
+lemma deg56SampleCertificate_getQ_K_deg56 :
+    deg56SampleCertificate.getQ? "K_deg56" = some (96 / 7 : ℚ) := by
+  rfl
+
+lemma deg56SampleCertificate_getQ_w3 :
+    deg56SampleCertificate.getQ? "w3" = some (1 / 8 : ℚ) := by
+  rfl
+
+lemma deg56SampleCertificate_getQ_w4 :
+    deg56SampleCertificate.getQ? "w4" = some (1 / 16 : ℚ) := by
+  rfl
+
+lemma deg56SampleCertificate_getQ_w5 :
+    deg56SampleCertificate.getQ? "w5" = some (1 / 32 : ℚ) := by
+  rfl
+
+lemma deg56SampleCertificate_getQ_w6 :
+    deg56SampleCertificate.getQ? "w6" = some (1 / 64 : ℚ) := by
+  rfl
+
+lemma deg56SampleCertificate_getQ_wL :
+    deg56SampleCertificate.getQ? "wL" = some (1 / 128 : ℚ) := by
   rfl
 
 end PlaneGraphs
