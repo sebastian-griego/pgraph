@@ -1,0 +1,9 @@
+Title: On the number of plane graphs of point sets with a small convex hull
+Event: 2025 Joint Mathematics Meetings (JMM 2025)
+Authors: Neely Lovvorn, Oscar Murillo-Espinoza
+URL: https://meetings.ams.org/math/jmm2025/meetingapp.cgi/Paper/46155
+
+Abstract:
+A plane graph is defined to be an embedding on a planar point set such that the edges are non-crossing line segments. Such graphs are useful, since they model many real-world phenomena. For this reason, plane graphs have been extensively studied. In this project, we study properties of a random plane graph, uniformly chosen from the set of graphs that can be embedded over a fixed point set. While there is a significant body of knowledge about the behavior of random graphs, the standard tools break down for plane graphs. Hardly anything is known in this case.
+
+We derive bounds on the expected vertex degrees in a random plane graph of a fixed planar point set. Our proofs are based on cross-graph charging. That is, we move charge across vertices of different graphs, to obtain properties of an average graph.

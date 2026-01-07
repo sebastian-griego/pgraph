@@ -1,0 +1,7 @@
+Title: On the minimum number of plane graphs of sets with a small convex hull
+Event: 2026 Joint Mathematics Meetings (JMM 2026)
+Authors: Neely Lovvorn, Oscar Murillo-Espinoza, Adam Sheffer
+URL: https://meetings.ams.org/math/jmm2026/meetingapp.cgi/Paper/53973
+
+Abstract:
+In plane graphs, the vertices are fixed points in \mathbb {R}^2 , and the edges are non-crossing line segments. For decades, it has been known that at least 11.65^n plane graphs can be drawn on any set of n points. In this work, we show that this bound is not tight for point sets with a small convex hull. We prove that, when the point set has a convex hull of constant size, the number of graphs is at least 12.15^n . Our analysis is based on studying the properties of random plane graphs. In particular, we rely on cross-graph charging schemes, where we move charge between different graphs of the same point set. This gives us information about the expected degrees in random plane graphs.
