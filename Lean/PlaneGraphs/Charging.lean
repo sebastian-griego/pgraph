@@ -57,6 +57,11 @@ lemma example_cert_deg34_bound {n : ℕ} (hn : 1 ≤ n) :
   simp [exampleCertificate_getQ_deg34] at *
   linarith [hnq]
 
+lemma avgIso_le_deg34_bound_cert {n : ℕ} (P : PointSet n) (hn : 1 ≤ n)
+    (havg : avgIso P ≤ (11 * (n : ℚ) - 6) / 112) :
+    avgIso P ≤ (n : ℚ) / ((exampleCertificate.getQ? "K_deg34").getD 0) := by
+  exact le_trans havg (example_cert_deg34_bound (n := n) hn)
+
 lemma charge_bound_deg34 {n v3 v4 vlarge : ℚ}
     (hvlarge : 0 ≤ vlarge)
     (hsum : v3 + v4 + vlarge = n)

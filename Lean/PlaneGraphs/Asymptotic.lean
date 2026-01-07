@@ -40,7 +40,8 @@ lemma pg_min_class_shifted_aux {K : ℚ} (hK : 0 < K)
           (pg_min_class C hgood (N + k + 1) : ℚ) ≥
             K * (pg_min_class C hgood (N + k) : ℚ) := by
         have hN : N ≤ N + k + 1 := by
-          simpa [Nat.add_assoc] using Nat.le_add_right N (k + 1)
+          exact
+            Nat.le_trans (Nat.le_add_right N k) (Nat.le_add_right (N + k) 1)
         refine pg_min_class_lower_bound_at (n := N + k) (K := K) (hK := hK) (C := C)
           (hgood := hgood) (hdel := hdel) (havg := ?_)
         intro P hP
@@ -61,7 +62,7 @@ lemma pg_min_class_shifted {K : ℚ} (hK : 0 < K)
     (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
     (hdel : ClosedUnderDelete C) (N : ℕ)
     (havg : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P → avgIso P ≤ (n : ℚ) / K) :
-    ∀ {n} (hn : n ≥ N),
+    ∀ {n}, n ≥ N →
       (pg_min_class C hgood n : ℚ) ≥
         (pg_min_class C hgood N : ℚ) * K ^ (n - N) := by
   intro n hn
@@ -76,7 +77,7 @@ lemma pg_min_class_prefactor {K : ℚ} (hK : 0 < K)
     (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
     (hdel : ClosedUnderDelete C) (N : ℕ)
     (havg : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P → avgIso P ≤ (n : ℚ) / K) :
-    ∀ {n} (hn : n ≥ N),
+    ∀ {n}, n ≥ N →
       (pg_min_class C hgood n : ℚ) ≥
         ((pg_min_class C hgood N : ℚ) / K ^ N) * K ^ n := by
   intro n hn
