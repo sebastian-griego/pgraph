@@ -19,6 +19,8 @@ Single lemma to strengthen
   The main entry points that consume this are:
   - `Lean/Main.lean`: `main_lower_bound_deg34_from_deg34`
   - `Lean/Main.lean`: `main_lower_bound_deg34_prefactor_from_deg34`
+  - `Lean/Main.lean`: `main_lower_bound_deg34_cert`
+  - `Lean/Main.lean`: `main_lower_bound_deg34_prefactor_cert`
 
 Certificate shape
 -----------------

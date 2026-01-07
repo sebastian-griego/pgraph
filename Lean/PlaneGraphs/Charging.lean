@@ -91,4 +91,15 @@ lemma charge_bound_deg34 {n v3 v4 vlarge : ℚ}
       linarith [hge, hv4]
     simpa [hexpr] using hbound
 
+lemma avgIso_le_deg34_of_split {n : ℕ} (P : PointSet n) {v3 v4 vlarge : ℚ}
+    (hvlarge : 0 ≤ vlarge)
+    (hsum : v3 + v4 + vlarge = (n : ℚ))
+    (hv4 : v4 ≤ (6 * (n : ℚ) - 9 * v3 - 6) / 2)
+    (havg : avgIso P ≤ v3 / 8 + v4 / 16 + vlarge / 32) :
+    avgIso P ≤ (11 * (n : ℚ) - 6) / 112 := by
+  have hbound :=
+    charge_bound_deg34 (n := (n : ℚ)) (v3 := v3) (v4 := v4) (vlarge := vlarge)
+      hvlarge hsum hv4
+  exact le_trans havg hbound
+
 end PlaneGraphs
