@@ -48,6 +48,7 @@ LEAN_EXPORT lean_object* l_PlaneGraphs_elabLoadCertificate(lean_object*, lean_ob
 static lean_object* l_PlaneGraphs_loadCertificate___closed__12;
 LEAN_EXPORT lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprProd____x40_Mathlib_Tactic_ToExpr___hyg_237____at_PlaneGraphs_elabLoadCertificate___spec__2(lean_object*);
 LEAN_EXPORT lean_object* l_List_foldl___at___private_PlaneGraphs_Certificate_0__PlaneGraphs_reprCertificate____x40_PlaneGraphs_Certificate___hyg_28____spec__5(lean_object*, lean_object*, lean_object*);
+static lean_object* l_PlaneGraphs_exampleCertificate___closed__15;
 static lean_object* l_Prod_repr___at___private_PlaneGraphs_Certificate_0__PlaneGraphs_reprCertificate____x40_PlaneGraphs_Certificate___hyg_28____spec__3___closed__7;
 lean_object* lean_array_fget(lean_object*, lean_object*);
 static lean_object* l_PlaneGraphs_exampleCertificate___closed__6;
@@ -88,12 +89,14 @@ static lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprList____x40_
 lean_object* l_Lean_MessageData_ofFormat(lean_object*);
 lean_object* l_Lean_Elab_getBetterRef(lean_object*, lean_object*);
 static lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprProd____x40_Mathlib_Tactic_ToExpr___hyg_237____at_PlaneGraphs_elabLoadCertificate___spec__2___closed__4;
+static lean_object* l_PlaneGraphs_exampleCertificate___closed__12;
 static lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprProd____x40_Mathlib_Tactic_ToExpr___hyg_237____at_PlaneGraphs_elabLoadCertificate___spec__3___closed__1;
 static lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprList____x40_Mathlib_Tactic_ToExpr___hyg_93____at_PlaneGraphs_elabLoadCertificate___spec__1___closed__6;
 static lean_object* l_PlaneGraphs_exampleCertificate___closed__3;
 lean_object* l_Lean_Elab_addMacroStack___at_Lean_Elab_Term_instAddErrorMessageContextTermElabM___spec__1(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 static lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprProd____x40_Mathlib_Tactic_ToExpr___hyg_237____at_PlaneGraphs_elabLoadCertificate___spec__3___closed__9;
 static lean_object* l_PlaneGraphs_parseRatPair___closed__2;
+static lean_object* l_PlaneGraphs_exampleCertificate___closed__13;
 static lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprList____x40_Mathlib_Tactic_ToExpr___hyg_93____at_PlaneGraphs_elabLoadCertificate___spec__1___closed__14;
 LEAN_EXPORT lean_object* l_PlaneGraphs_parseConstObj(lean_object*);
 static lean_object* l_PlaneGraphs_elabLoadCertificate___lambda__1___closed__2;
@@ -101,6 +104,7 @@ lean_object* l_Int_repr(lean_object*);
 static lean_object* l_List_repr___at___private_PlaneGraphs_Certificate_0__PlaneGraphs_reprCertificate____x40_PlaneGraphs_Certificate___hyg_28____spec__1___closed__5;
 static lean_object* l_PlaneGraphs_elabLoadCertificate___lambda__2___closed__1;
 static lean_object* l_Prod_repr___at___private_PlaneGraphs_Certificate_0__PlaneGraphs_reprCertificate____x40_PlaneGraphs_Certificate___hyg_28____spec__3___closed__6;
+static lean_object* l_PlaneGraphs_exampleCertificate___closed__14;
 static lean_object* l_PlaneGraphs_elabLoadCertificate___closed__1;
 static lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprProd____x40_Mathlib_Tactic_ToExpr___hyg_237____at_PlaneGraphs_elabLoadCertificate___spec__3___closed__8;
 static lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprList____x40_Mathlib_Tactic_ToExpr___hyg_93____at_PlaneGraphs_elabLoadCertificate___spec__1___closed__2;
@@ -118,6 +122,7 @@ static lean_object* l___private_PlaneGraphs_Certificate_0__PlaneGraphs_reprCerti
 static lean_object* l___private_Mathlib_Tactic_ToExpr_0__Lean_toExprProd____x40_Mathlib_Tactic_ToExpr___hyg_237____at_PlaneGraphs_elabLoadCertificate___spec__2___closed__6;
 static lean_object* l_Prod_repr___at___private_PlaneGraphs_Certificate_0__PlaneGraphs_reprCertificate____x40_PlaneGraphs_Certificate___hyg_28____spec__3___closed__1;
 lean_object* l_IO_FS_readFile(lean_object*, lean_object*);
+static lean_object* l_PlaneGraphs_exampleCertificate___closed__11;
 LEAN_EXPORT lean_object* l_PlaneGraphs_loadCertificate;
 LEAN_EXPORT lean_object* l_Lean_RBNode_fold___at_PlaneGraphs_parseConstObj___spec__1(lean_object*, lean_object*);
 static lean_object* l___private_PlaneGraphs_Certificate_0__PlaneGraphs_reprCertificate____x40_PlaneGraphs_Certificate___hyg_28____closed__2;
@@ -2781,21 +2786,74 @@ return x_3;
 static lean_object* _init_l_PlaneGraphs_exampleCertificate___closed__9() {
 _start:
 {
-lean_object* x_1; lean_object* x_2; lean_object* x_3; 
-x_1 = lean_box(0);
-x_2 = l_PlaneGraphs_exampleCertificate___closed__8;
-x_3 = lean_alloc_ctor(1, 2, 0);
-lean_ctor_set(x_3, 0, x_2);
-lean_ctor_set(x_3, 1, x_1);
-return x_3;
+lean_object* x_1; lean_object* x_2; 
+x_1 = lean_unsigned_to_nat(112u);
+x_2 = lean_nat_to_int(x_1);
+return x_2;
 }
 }
 static lean_object* _init_l_PlaneGraphs_exampleCertificate___closed__10() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_exampleCertificate___closed__9;
+x_2 = lean_unsigned_to_nat(11u);
+x_3 = lean_alloc_ctor(0, 2, 0);
+lean_ctor_set(x_3, 0, x_1);
+lean_ctor_set(x_3, 1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_exampleCertificate___closed__11() {
+_start:
+{
+lean_object* x_1; 
+x_1 = lean_mk_string_from_bytes("K_deg34", 7);
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_exampleCertificate___closed__12() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_exampleCertificate___closed__11;
+x_2 = l_PlaneGraphs_exampleCertificate___closed__10;
+x_3 = lean_alloc_ctor(0, 2, 0);
+lean_ctor_set(x_3, 0, x_1);
+lean_ctor_set(x_3, 1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_exampleCertificate___closed__13() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = lean_box(0);
+x_2 = l_PlaneGraphs_exampleCertificate___closed__12;
+x_3 = lean_alloc_ctor(1, 2, 0);
+lean_ctor_set(x_3, 0, x_2);
+lean_ctor_set(x_3, 1, x_1);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_exampleCertificate___closed__14() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_exampleCertificate___closed__8;
+x_2 = l_PlaneGraphs_exampleCertificate___closed__13;
+x_3 = lean_alloc_ctor(1, 2, 0);
+lean_ctor_set(x_3, 0, x_1);
+lean_ctor_set(x_3, 1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_exampleCertificate___closed__15() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
 x_1 = l_PlaneGraphs_exampleCertificate___closed__4;
-x_2 = l_PlaneGraphs_exampleCertificate___closed__9;
+x_2 = l_PlaneGraphs_exampleCertificate___closed__14;
 x_3 = lean_alloc_ctor(1, 2, 0);
 lean_ctor_set(x_3, 0, x_1);
 lean_ctor_set(x_3, 1, x_2);
@@ -2806,7 +2864,7 @@ static lean_object* _init_l_PlaneGraphs_exampleCertificate() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_PlaneGraphs_exampleCertificate___closed__10;
+x_1 = l_PlaneGraphs_exampleCertificate___closed__15;
 return x_1;
 }
 }
@@ -3027,6 +3085,16 @@ l_PlaneGraphs_exampleCertificate___closed__9 = _init_l_PlaneGraphs_exampleCertif
 lean_mark_persistent(l_PlaneGraphs_exampleCertificate___closed__9);
 l_PlaneGraphs_exampleCertificate___closed__10 = _init_l_PlaneGraphs_exampleCertificate___closed__10();
 lean_mark_persistent(l_PlaneGraphs_exampleCertificate___closed__10);
+l_PlaneGraphs_exampleCertificate___closed__11 = _init_l_PlaneGraphs_exampleCertificate___closed__11();
+lean_mark_persistent(l_PlaneGraphs_exampleCertificate___closed__11);
+l_PlaneGraphs_exampleCertificate___closed__12 = _init_l_PlaneGraphs_exampleCertificate___closed__12();
+lean_mark_persistent(l_PlaneGraphs_exampleCertificate___closed__12);
+l_PlaneGraphs_exampleCertificate___closed__13 = _init_l_PlaneGraphs_exampleCertificate___closed__13();
+lean_mark_persistent(l_PlaneGraphs_exampleCertificate___closed__13);
+l_PlaneGraphs_exampleCertificate___closed__14 = _init_l_PlaneGraphs_exampleCertificate___closed__14();
+lean_mark_persistent(l_PlaneGraphs_exampleCertificate___closed__14);
+l_PlaneGraphs_exampleCertificate___closed__15 = _init_l_PlaneGraphs_exampleCertificate___closed__15();
+lean_mark_persistent(l_PlaneGraphs_exampleCertificate___closed__15);
 l_PlaneGraphs_exampleCertificate = _init_l_PlaneGraphs_exampleCertificate();
 lean_mark_persistent(l_PlaneGraphs_exampleCertificate);
 return lean_io_result_mk_ok(lean_box(0));

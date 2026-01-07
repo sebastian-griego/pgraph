@@ -3,6 +3,18 @@
    ".> LEAN_PATH=././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/Cli/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib LD_LIBRARY_PATH=././.lake/build/lib /home/jovyan/.elan/toolchains/leanprover--lean4---v4.9.0/bin/lean ././Lean/./Main.lean -R ././Lean/. -o ././.lake/build/lib/Main.olean -i ././.lake/build/lib/Main.ilean -c ././.lake/build/ir/Main.c --json",
    "level": "trace"},
   {"message":
-   "././Lean/./Main.lean:25:0: 'PlaneGraphs.main_lower_bound' depends on axioms: [propext, Quot.sound, Classical.choice]",
+   "././Lean/./Main.lean:20:18: unused variable `hn`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./Main.lean:22:11: unused variable `hn`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./Main.lean:32:18: unused variable `hn`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./Main.lean:34:11: unused variable `hn`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./Main.lean:42:0: 'PlaneGraphs.main_lower_bound_deg34' depends on axioms: [propext, Quot.sound, Classical.choice]",
    "level": "info"}],
- "depHash": "15798180923762412489"}
+ "depHash": "7719330917486548860"}

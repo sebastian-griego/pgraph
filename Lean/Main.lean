@@ -1,14 +1,10 @@
+import PlaneGraphs.Asymptotic
+import PlaneGraphs.Charging
 import PlaneGraphs.Counterexample
-import PlaneGraphs.TrivialLowerBound
 
 namespace PlaneGraphs
 
 def H : Nat := 3
-
-theorem trivial_lower_bound {n : ℕ} (P : PointSet (n + 1)) :
-    (pg P : ℚ) ≥ (2 : ℚ) ^ n := by
-  have h : (2 ^ n : ℕ) ≤ pg P := pg_ge_two_pow (P := P)
-  exact_mod_cast h
 
 theorem counterexample_12_15_with_hull (_h : HullSize trianglePoints ≤ H) :
     (pg trianglePoints : ℚ) < (243 / 20 : ℚ) ^ (3 : ℕ) := by
@@ -18,10 +14,31 @@ theorem counterexample_23_32_with_hull (_h : HullSize trianglePoints ≤ H) :
     (pg trianglePoints : ℚ) < (583 / 25 : ℚ) ^ (3 : ℕ) := by
   simpa using counterexample_23_32_n3
 
-theorem main_lower_bound {n : ℕ} (P : PointSet (n + 1)) (_ : HullSize P ≤ H) :
-    (pg P : ℚ) ≥ (2 : ℚ) ^ n := by
-  exact trivial_lower_bound (P := P)
+theorem main_lower_bound_deg34
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hav : ∀ {n} (hn : n ≥ N) (P : PointSet n), C n P →
+      avgIso P ≤ (n : ℚ) / (112 / 11 : ℚ)) :
+    ∀ {n} (hn : n ≥ N),
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * (112 / 11 : ℚ) ^ (n - N) := by
+  intro n hn
+  exact pg_min_class_shifted (K := (112 / 11 : ℚ)) (hK := by norm_num)
+    (C := C) (hgood := hgood) (hdel := hdel) (N := N) (havg := hav) (n := n) hn
 
-#print axioms main_lower_bound
+theorem main_lower_bound_deg34_prefactor
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hav : ∀ {n} (hn : n ≥ N) (P : PointSet n), C n P →
+      avgIso P ≤ (n : ℚ) / (112 / 11 : ℚ)) :
+    ∀ {n} (hn : n ≥ N),
+      (pg_min_class C hgood n : ℚ) ≥
+        ((pg_min_class C hgood N : ℚ) / (112 / 11 : ℚ) ^ N) *
+          (112 / 11 : ℚ) ^ n := by
+  intro n hn
+  exact pg_min_class_prefactor (K := (112 / 11 : ℚ)) (hK := by norm_num)
+    (C := C) (hgood := hgood) (hdel := hdel) (N := N) (havg := hav) (n := n) hn
+
+#print axioms main_lower_bound_deg34
 
 end PlaneGraphs

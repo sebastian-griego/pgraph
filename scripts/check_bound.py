@@ -22,19 +22,43 @@ def parse_fraction(text: str) -> Fraction:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--bound", default="243/20")
-    parser.add_argument("--min-n", type=int, default=3)
+    parser.add_argument("--min-n", "--nmin", dest="min_n", type=int, default=3)
     parser.add_argument("--max-n", type=int, default=6)
     parser.add_argument("--max-hull", type=int, default=3)
     parser.add_argument("--radius", type=int, default=1)
+    parser.add_argument("--base-n", type=int)
+    parser.add_argument("--shifted", action="store_true")
+    parser.add_argument("--prefactor", action="store_true")
     args = parser.parse_args()
 
     bound = parse_fraction(args.bound)
+    base_n = args.base_n if args.base_n is not None else args.min_n
 
     grid = [
         (x, y)
         for x in range(-args.radius, args.radius + 1)
         for y in range(-args.radius, args.radius + 1)
     ]
+
+    pg_min_base = None
+    if args.shifted or args.prefactor:
+        if base_n > args.max_n:
+            raise SystemExit("--base-n must be <= --max-n")
+        for pts in itertools.combinations(grid, base_n):
+            pts_list = list(pts)
+            if not general_position(pts_list):
+                continue
+            if hull_size(pts_list) > args.max_hull:
+                continue
+            value = pg(pts_list)
+            if pg_min_base is None or value < pg_min_base:
+                pg_min_base = value
+        if pg_min_base is None:
+            print("no candidate point sets found for base-n")
+            return
+        if args.prefactor:
+            c = Fraction(pg_min_base, 1) / (bound ** base_n)
+            print(f"prefactor c={c} from base-n={base_n}")
 
     for n in range(args.min_n, args.max_n + 1):
         for pts in itertools.combinations(grid, n):
@@ -44,13 +68,19 @@ def main() -> None:
             if hull_size(pts_list) > args.max_hull:
                 continue
             value = pg(pts_list)
-            if value < bound ** n:
+            if args.shifted:
+                bound_val = Fraction(pg_min_base, 1) * (bound ** (n - base_n))
+            elif args.prefactor:
+                bound_val = c * (bound ** n)
+            else:
+                bound_val = bound ** n
+            if value < bound_val:
                 print("counterexample:")
                 print(f"  n={n}")
                 print(f"  points={pts_list}")
                 print(f"  hull_size={hull_size(pts_list)}")
                 print(f"  pg={value}")
-                print(f"  bound={bound}^{n}={bound ** n}")
+                print(f"  bound={bound_val}")
                 return
 
     print("no counterexample found in grid search")

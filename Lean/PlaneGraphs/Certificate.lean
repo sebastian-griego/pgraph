@@ -76,7 +76,7 @@ def exampleCertificate : Certificate :=
 
 lemma exampleCertificate_constants :
     exampleCertificate.constants =
-      [("K_12_15", 243, 20), ("K_23_32", 583, 25)] := by
+      [("K_12_15", 243, 20), ("K_23_32", 583, 25), ("K_deg34", 112, 11)] := by
   rfl
 
 lemma exampleCertificate_getQ_12_15 :
@@ -85,6 +85,10 @@ lemma exampleCertificate_getQ_12_15 :
 
 lemma exampleCertificate_getQ_23_32 :
     exampleCertificate.getQ? "K_23_32" = some (583 / 25 : ℚ) := by
+  rfl
+
+lemma exampleCertificate_getQ_deg34 :
+    exampleCertificate.getQ? "K_deg34" = some (112 / 11 : ℚ) := by
   rfl
 
 end PlaneGraphs

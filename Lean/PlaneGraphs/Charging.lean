@@ -40,6 +40,23 @@ end PlaneGraphs
 
 namespace PlaneGraphs
 
+lemma avgIso_le_deg34_bound {n : ℕ} (P : PointSet n) (hn : 1 ≤ n)
+    (havg : avgIso P ≤ (11 * (n : ℚ) - 6) / 112) :
+    avgIso P ≤ (n : ℚ) / (112 / 11 : ℚ) := by
+  have hnq : (1 : ℚ) ≤ (n : ℚ) := by
+    exact_mod_cast hn
+  have hineq : (11 * (n : ℚ) - 6) / 112 ≤ (n : ℚ) / (112 / 11 : ℚ) := by
+    linarith [hnq]
+  exact le_trans havg hineq
+
+lemma example_cert_deg34_bound {n : ℕ} (hn : 1 ≤ n) :
+    (11 * (n : ℚ) - 6) / 112 ≤
+      (n : ℚ) / ((exampleCertificate.getQ? "K_deg34").getD 0) := by
+  have hnq : (1 : ℚ) ≤ (n : ℚ) := by
+    exact_mod_cast hn
+  simp [exampleCertificate_getQ_deg34] at *
+  linarith [hnq]
+
 lemma charge_bound_deg34 {n v3 v4 vlarge : ℚ}
     (hvlarge : 0 ≤ vlarge)
     (hsum : v3 + v4 + vlarge = n)
