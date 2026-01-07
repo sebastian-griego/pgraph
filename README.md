@@ -9,10 +9,13 @@ Quick checks
 
 Python tooling
 --------------
-- `scripts/find_extremal.py`: local search for hull size 3 point sets.
+- `scripts/find_extremal.py`: local search for hull size 3 point sets (supports
+  multiple seeds via `--seeds`).
 - `scripts/check_bound.py`: counterexample search; supports `--nmin`, `--shifted`,
   and `--prefactor` for asymptotic forms.
 - `scripts/export_certificate.py`: export rational constants as JSON.
+- `scripts/optimize_charging.py`: exact LP solver for charging bounds (deg34 or a
+  JSON-specified LP).
 
 Lean entry points
 -----------------

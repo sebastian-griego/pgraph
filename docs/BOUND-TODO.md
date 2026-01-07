@@ -52,3 +52,33 @@ Re-run + rebuild
 4) Re-check counterexample search with a higher `--nmin` using
 
    python scripts/check_bound.py --bound NUM/DEN --nmin N --shifted
+
+Helper tooling
+--------------
+- `scripts/optimize_charging.py` solves the deg34 LP exactly for a range of `n`
+  and reports the worst-case charge and implied K. This is a good baseline
+  when experimenting with stronger constraints or additional degree buckets.
+- The same script accepts a custom LP in JSON via `--constraints`, with linear
+  expressions in `n` of the form `a*n+b` (rational `a,b`). The schema is:
+
+  {
+    "variables": ["v3", "v4", "vlarge"],
+    "objective": ["1/8", "1/16", "1/32"],
+    "equalities": [
+      {"coeffs": ["1", "1", "1"], "rhs": "n"}
+    ],
+    "inequalities": [
+      {"coeffs": ["-1", "0", "0"], "rhs": "0"},
+      {"coeffs": ["0", "-1", "0"], "rhs": "0"},
+      {"coeffs": ["0", "0", "-1"], "rhs": "0"},
+      {"coeffs": ["9", "1/2", "0"], "rhs": "6*n-6"}
+    ]
+  }
+
+  Run it with:
+
+  python scripts/optimize_charging.py --constraints path/to/lp.json --min-n 5 --max-n 20
+
+  Example file:
+
+  docs/lp/deg34.json
