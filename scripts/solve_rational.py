@@ -137,6 +137,10 @@ def main() -> None:
 
     weights_f, z_float = _solve_lp(vectors, bounds, args.monotone)
     weights = [Fraction(w).limit_denominator(args.max_den) for w in weights_f]
+    if all(w == 0 for w in weights):
+        raise SystemExit(
+            "all weights snapped to 0; use fixed weights or raise max-den"
+        )
 
     for w, limit in zip(
         weights,

@@ -95,3 +95,5 @@ Helper tooling
   certificate.
 - `certificates/deg56_sample.json` is a data-driven sample certificate created
   from mined vectors; it is not a proven bound yet.
+- `Lean/Main.lean` includes `main_lower_bound_deg56_sample*` entry points that
+  accept a hypothetical `avgIso` bound for `K_deg56_sample_main`.

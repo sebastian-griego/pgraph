@@ -8,9 +8,13 @@ namespace PlaneGraphs
 
 def H : Nat := 3
 def K_deg34_cert : ℚ := (exampleCertificate.getQ? "K_deg34").getD 0
+def K_deg56_sample_main : ℚ := K_deg56_sample
 
 lemma K_deg34_cert_pos : 0 < K_deg34_cert := by
   simp [K_deg34_cert, exampleCertificate_getQ_deg34]
+
+lemma K_deg56_sample_main_pos : 0 < K_deg56_sample_main := by
+  simpa [K_deg56_sample_main] using K_deg56_sample_pos
 
 theorem counterexample_12_15_with_hull (_h : HullSize trianglePoints ≤ H) :
     (pg trianglePoints : ℚ) < (243 / 20 : ℚ) ^ (3 : ℕ) := by
@@ -149,5 +153,30 @@ theorem main_lower_bound_deg34_product
     (hdel := hdel) (N := N) (hKpos := hKpos) (havg := hav') (n := n) hn
 
 #print axioms main_lower_bound_deg34
+
+theorem main_lower_bound_deg56_sample
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hav : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      avgIso P ≤ (n : ℚ) / K_deg56_sample_main) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_sample_main ^ (n - N) := by
+  intro n hn
+  exact pg_min_class_shifted (K := K_deg56_sample_main) (hK := K_deg56_sample_main_pos)
+    (C := C) (hgood := hgood) (hdel := hdel) (N := N) (havg := hav) (n := n) hn
+
+theorem main_lower_bound_deg56_sample_prefactor
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hav : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      avgIso P ≤ (n : ℚ) / K_deg56_sample_main) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        ((pg_min_class C hgood N : ℚ) / K_deg56_sample_main ^ N) *
+          K_deg56_sample_main ^ n := by
+  intro n hn
+  exact pg_min_class_prefactor (K := K_deg56_sample_main) (hK := K_deg56_sample_main_pos)
+    (C := C) (hgood := hgood) (hdel := hdel) (N := N) (havg := hav) (n := n) hn
 
 end PlaneGraphs

@@ -14,13 +14,40 @@
 extern "C" {
 #endif
 lean_object* l_Nat_cast___at_Rat_instOfNat___spec__1(lean_object*);
+LEAN_EXPORT lean_object* l_PlaneGraphs_K__deg56__sample;
+LEAN_EXPORT lean_object* l_PlaneGraphs_w6__sample;
+extern lean_object* l_PlaneGraphs_deg56SampleCertificate;
+static lean_object* l_PlaneGraphs_w5__sample___closed__1;
+static lean_object* l_PlaneGraphs_w3__sample___closed__3;
+static lean_object* l_PlaneGraphs_w3__sample___closed__1;
+static lean_object* l_PlaneGraphs_wL__sample___closed__1;
+LEAN_EXPORT lean_object* l_PlaneGraphs_w4__sample;
+static lean_object* l_PlaneGraphs_w6__sample___closed__1;
+LEAN_EXPORT lean_object* l_PlaneGraphs_w5__sample;
 static lean_object* l_PlaneGraphs_K__deg34__step___closed__2;
+static lean_object* l_PlaneGraphs_K__deg56__sample___closed__1;
+static lean_object* l_PlaneGraphs_w6__sample___closed__2;
 static lean_object* l_PlaneGraphs_K__deg34__step___closed__3;
+static lean_object* l_PlaneGraphs_K__deg56__sample___closed__2;
 lean_object* l_Rat_mul(lean_object*, lean_object*);
 lean_object* l_Rat_sub(lean_object*, lean_object*);
 static lean_object* l_PlaneGraphs_K__deg34__step___closed__1;
+static lean_object* l_PlaneGraphs_w5__sample___closed__2;
+static lean_object* l_PlaneGraphs_K__deg56__sample___closed__3;
+static lean_object* l_PlaneGraphs_wL__sample___closed__2;
+static lean_object* l_PlaneGraphs_w5__sample___closed__3;
+lean_object* l_PlaneGraphs_Certificate_getQ_x3f(lean_object*, lean_object*);
+LEAN_EXPORT lean_object* l_PlaneGraphs_w3__sample;
+static lean_object* l_PlaneGraphs_K__deg56__sample___closed__4;
+static lean_object* l_PlaneGraphs_w4__sample___closed__3;
 lean_object* l_Rat_div(lean_object*, lean_object*);
+static lean_object* l_PlaneGraphs_w3__sample___closed__2;
+static lean_object* l_PlaneGraphs_w4__sample___closed__1;
+LEAN_EXPORT lean_object* l_PlaneGraphs_wL__sample;
 LEAN_EXPORT lean_object* l_PlaneGraphs_K__deg34__step(lean_object*);
+static lean_object* l_PlaneGraphs_wL__sample___closed__3;
+static lean_object* l_PlaneGraphs_w4__sample___closed__2;
+static lean_object* l_PlaneGraphs_w6__sample___closed__3;
 static lean_object* _init_l_PlaneGraphs_K__deg34__step___closed__1() {
 _start:
 {
@@ -65,6 +92,291 @@ lean_dec(x_4);
 return x_9;
 }
 }
+static lean_object* _init_l_PlaneGraphs_K__deg56__sample___closed__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = lean_mk_string_from_bytes("K_deg56", 7);
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_K__deg56__sample___closed__2() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_deg56SampleCertificate;
+x_2 = l_PlaneGraphs_K__deg56__sample___closed__1;
+x_3 = l_PlaneGraphs_Certificate_getQ_x3f(x_1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_K__deg56__sample___closed__3() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; 
+x_1 = lean_unsigned_to_nat(0u);
+x_2 = l_Nat_cast___at_Rat_instOfNat___spec__1(x_1);
+return x_2;
+}
+}
+static lean_object* _init_l_PlaneGraphs_K__deg56__sample___closed__4() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_K__deg56__sample___closed__2;
+if (lean_obj_tag(x_1) == 0)
+{
+lean_object* x_2; 
+x_2 = l_PlaneGraphs_K__deg56__sample___closed__3;
+return x_2;
+}
+else
+{
+lean_object* x_3; 
+x_3 = lean_ctor_get(x_1, 0);
+lean_inc(x_3);
+return x_3;
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_K__deg56__sample() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_K__deg56__sample___closed__4;
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w3__sample___closed__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = lean_mk_string_from_bytes("w3", 2);
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w3__sample___closed__2() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_deg56SampleCertificate;
+x_2 = l_PlaneGraphs_w3__sample___closed__1;
+x_3 = l_PlaneGraphs_Certificate_getQ_x3f(x_1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w3__sample___closed__3() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_w3__sample___closed__2;
+if (lean_obj_tag(x_1) == 0)
+{
+lean_object* x_2; 
+x_2 = l_PlaneGraphs_K__deg56__sample___closed__3;
+return x_2;
+}
+else
+{
+lean_object* x_3; 
+x_3 = lean_ctor_get(x_1, 0);
+lean_inc(x_3);
+return x_3;
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_w3__sample() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_w3__sample___closed__3;
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w4__sample___closed__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = lean_mk_string_from_bytes("w4", 2);
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w4__sample___closed__2() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_deg56SampleCertificate;
+x_2 = l_PlaneGraphs_w4__sample___closed__1;
+x_3 = l_PlaneGraphs_Certificate_getQ_x3f(x_1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w4__sample___closed__3() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_w4__sample___closed__2;
+if (lean_obj_tag(x_1) == 0)
+{
+lean_object* x_2; 
+x_2 = l_PlaneGraphs_K__deg56__sample___closed__3;
+return x_2;
+}
+else
+{
+lean_object* x_3; 
+x_3 = lean_ctor_get(x_1, 0);
+lean_inc(x_3);
+return x_3;
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_w4__sample() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_w4__sample___closed__3;
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w5__sample___closed__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = lean_mk_string_from_bytes("w5", 2);
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w5__sample___closed__2() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_deg56SampleCertificate;
+x_2 = l_PlaneGraphs_w5__sample___closed__1;
+x_3 = l_PlaneGraphs_Certificate_getQ_x3f(x_1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w5__sample___closed__3() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_w5__sample___closed__2;
+if (lean_obj_tag(x_1) == 0)
+{
+lean_object* x_2; 
+x_2 = l_PlaneGraphs_K__deg56__sample___closed__3;
+return x_2;
+}
+else
+{
+lean_object* x_3; 
+x_3 = lean_ctor_get(x_1, 0);
+lean_inc(x_3);
+return x_3;
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_w5__sample() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_w5__sample___closed__3;
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w6__sample___closed__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = lean_mk_string_from_bytes("w6", 2);
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w6__sample___closed__2() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_deg56SampleCertificate;
+x_2 = l_PlaneGraphs_w6__sample___closed__1;
+x_3 = l_PlaneGraphs_Certificate_getQ_x3f(x_1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_w6__sample___closed__3() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_w6__sample___closed__2;
+if (lean_obj_tag(x_1) == 0)
+{
+lean_object* x_2; 
+x_2 = l_PlaneGraphs_K__deg56__sample___closed__3;
+return x_2;
+}
+else
+{
+lean_object* x_3; 
+x_3 = lean_ctor_get(x_1, 0);
+lean_inc(x_3);
+return x_3;
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_w6__sample() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_w6__sample___closed__3;
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_wL__sample___closed__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = lean_mk_string_from_bytes("wL", 2);
+return x_1;
+}
+}
+static lean_object* _init_l_PlaneGraphs_wL__sample___closed__2() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_deg56SampleCertificate;
+x_2 = l_PlaneGraphs_wL__sample___closed__1;
+x_3 = l_PlaneGraphs_Certificate_getQ_x3f(x_1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_wL__sample___closed__3() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_wL__sample___closed__2;
+if (lean_obj_tag(x_1) == 0)
+{
+lean_object* x_2; 
+x_2 = l_PlaneGraphs_K__deg56__sample___closed__3;
+return x_2;
+}
+else
+{
+lean_object* x_3; 
+x_3 = lean_ctor_get(x_1, 0);
+lean_inc(x_3);
+return x_3;
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_wL__sample() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_wL__sample___closed__3;
+return x_1;
+}
+}
 lean_object* initialize_Init(uint8_t builtin, lean_object*);
 lean_object* initialize_Mathlib(uint8_t builtin, lean_object*);
 lean_object* initialize_PlaneGraphs_ExpectationLemma(uint8_t builtin, lean_object*);
@@ -92,6 +404,56 @@ l_PlaneGraphs_K__deg34__step___closed__2 = _init_l_PlaneGraphs_K__deg34__step___
 lean_mark_persistent(l_PlaneGraphs_K__deg34__step___closed__2);
 l_PlaneGraphs_K__deg34__step___closed__3 = _init_l_PlaneGraphs_K__deg34__step___closed__3();
 lean_mark_persistent(l_PlaneGraphs_K__deg34__step___closed__3);
+l_PlaneGraphs_K__deg56__sample___closed__1 = _init_l_PlaneGraphs_K__deg56__sample___closed__1();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__sample___closed__1);
+l_PlaneGraphs_K__deg56__sample___closed__2 = _init_l_PlaneGraphs_K__deg56__sample___closed__2();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__sample___closed__2);
+l_PlaneGraphs_K__deg56__sample___closed__3 = _init_l_PlaneGraphs_K__deg56__sample___closed__3();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__sample___closed__3);
+l_PlaneGraphs_K__deg56__sample___closed__4 = _init_l_PlaneGraphs_K__deg56__sample___closed__4();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__sample___closed__4);
+l_PlaneGraphs_K__deg56__sample = _init_l_PlaneGraphs_K__deg56__sample();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__sample);
+l_PlaneGraphs_w3__sample___closed__1 = _init_l_PlaneGraphs_w3__sample___closed__1();
+lean_mark_persistent(l_PlaneGraphs_w3__sample___closed__1);
+l_PlaneGraphs_w3__sample___closed__2 = _init_l_PlaneGraphs_w3__sample___closed__2();
+lean_mark_persistent(l_PlaneGraphs_w3__sample___closed__2);
+l_PlaneGraphs_w3__sample___closed__3 = _init_l_PlaneGraphs_w3__sample___closed__3();
+lean_mark_persistent(l_PlaneGraphs_w3__sample___closed__3);
+l_PlaneGraphs_w3__sample = _init_l_PlaneGraphs_w3__sample();
+lean_mark_persistent(l_PlaneGraphs_w3__sample);
+l_PlaneGraphs_w4__sample___closed__1 = _init_l_PlaneGraphs_w4__sample___closed__1();
+lean_mark_persistent(l_PlaneGraphs_w4__sample___closed__1);
+l_PlaneGraphs_w4__sample___closed__2 = _init_l_PlaneGraphs_w4__sample___closed__2();
+lean_mark_persistent(l_PlaneGraphs_w4__sample___closed__2);
+l_PlaneGraphs_w4__sample___closed__3 = _init_l_PlaneGraphs_w4__sample___closed__3();
+lean_mark_persistent(l_PlaneGraphs_w4__sample___closed__3);
+l_PlaneGraphs_w4__sample = _init_l_PlaneGraphs_w4__sample();
+lean_mark_persistent(l_PlaneGraphs_w4__sample);
+l_PlaneGraphs_w5__sample___closed__1 = _init_l_PlaneGraphs_w5__sample___closed__1();
+lean_mark_persistent(l_PlaneGraphs_w5__sample___closed__1);
+l_PlaneGraphs_w5__sample___closed__2 = _init_l_PlaneGraphs_w5__sample___closed__2();
+lean_mark_persistent(l_PlaneGraphs_w5__sample___closed__2);
+l_PlaneGraphs_w5__sample___closed__3 = _init_l_PlaneGraphs_w5__sample___closed__3();
+lean_mark_persistent(l_PlaneGraphs_w5__sample___closed__3);
+l_PlaneGraphs_w5__sample = _init_l_PlaneGraphs_w5__sample();
+lean_mark_persistent(l_PlaneGraphs_w5__sample);
+l_PlaneGraphs_w6__sample___closed__1 = _init_l_PlaneGraphs_w6__sample___closed__1();
+lean_mark_persistent(l_PlaneGraphs_w6__sample___closed__1);
+l_PlaneGraphs_w6__sample___closed__2 = _init_l_PlaneGraphs_w6__sample___closed__2();
+lean_mark_persistent(l_PlaneGraphs_w6__sample___closed__2);
+l_PlaneGraphs_w6__sample___closed__3 = _init_l_PlaneGraphs_w6__sample___closed__3();
+lean_mark_persistent(l_PlaneGraphs_w6__sample___closed__3);
+l_PlaneGraphs_w6__sample = _init_l_PlaneGraphs_w6__sample();
+lean_mark_persistent(l_PlaneGraphs_w6__sample);
+l_PlaneGraphs_wL__sample___closed__1 = _init_l_PlaneGraphs_wL__sample___closed__1();
+lean_mark_persistent(l_PlaneGraphs_wL__sample___closed__1);
+l_PlaneGraphs_wL__sample___closed__2 = _init_l_PlaneGraphs_wL__sample___closed__2();
+lean_mark_persistent(l_PlaneGraphs_wL__sample___closed__2);
+l_PlaneGraphs_wL__sample___closed__3 = _init_l_PlaneGraphs_wL__sample___closed__3();
+lean_mark_persistent(l_PlaneGraphs_wL__sample___closed__3);
+l_PlaneGraphs_wL__sample = _init_l_PlaneGraphs_wL__sample();
+lean_mark_persistent(l_PlaneGraphs_wL__sample);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus
