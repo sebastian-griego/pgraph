@@ -9,77 +9,75 @@ from .crossing_graph import crossing_graph
 from .geometry import Point
 
 
+def get_degrees(points: list[Point], edges: list[tuple[int, int]]) -> list[int]:
+    """Compute vertex degrees for a set of edges."""
+    degrees = [0] * len(points)
+    for i, j in edges:
+        degrees[i] += 1
+        degrees[j] += 1
+    return degrees
+
+
+def enumerate_triangulations(
+    points: Iterable[Point],
+    max_count: int | None = None,
+) -> list[list[tuple[int, int]]]:
+    """Enumerate all triangulations as maximal non-crossing edge sets."""
+    pts = list(points)
+    segments, adj = crossing_graph(pts)
+    m = len(segments)
+
+    # Build the complement graph: edges correspond to non-crossing segments.
+    compat = [set() for _ in range(m)]
+    for i in range(m):
+        row = compat[i]
+        for j in range(m):
+            if i == j:
+                continue
+            if (adj[i] >> j) & 1 == 0:
+                row.add(j)
+
+    results: list[list[tuple[int, int]]] = []
+
+    def bron_kerbosch(r: set[int], p: set[int], x: set[int]) -> None:
+        if max_count is not None and len(results) >= max_count:
+            return
+        if not p and not x:
+            results.append([segments[i] for i in sorted(r)])
+            return
+        pivot_candidates = p | x
+        if pivot_candidates:
+            u = next(iter(pivot_candidates))
+            exclude = compat[u]
+        else:
+            exclude = set()
+        for v in list(p - exclude):
+            bron_kerbosch(r | {v}, p & compat[v], x & compat[v])
+            p.remove(v)
+            x.add(v)
+            if max_count is not None and len(results) >= max_count:
+                return
+
+    bron_kerbosch(set(), set(range(m)), set())
+    return results
+
+
 def triangulation_degree_vectors(
     points: Iterable[Point],
     max_count: int | None = None,
 ) -> list[tuple[int, int, int, int, int]]:
     """Return degree count vectors (v3, v4, v5, v6, vlarge) for triangulations."""
     pts = list(points)
-    n = len(pts)
-    target_edges = 3 * n - 6
-    if target_edges < 0:
-        return []
-
-    segments, adj = crossing_graph(pts)
-    m = len(segments)
-    if target_edges > m:
-        return []
-
-    degrees = [0] * n
     vectors: list[tuple[int, int, int, int, int]] = []
-    seen = 0
-
-    def choose_vertex(mask: int) -> int:
-        best = -1
-        best_deg = -1
-        mtemp = mask
-        while mtemp:
-            lsb = mtemp & -mtemp
-            v = lsb.bit_length() - 1
-            deg = (adj[v] & mask).bit_count()
-            if deg > best_deg:
-                best = v
-                best_deg = deg
-            mtemp ^= lsb
-        return best
-
-    def record_vector() -> None:
+    triangulations = enumerate_triangulations(pts, max_count=max_count)
+    for edges in triangulations:
+        degrees = get_degrees(pts, edges)
         v3 = sum(1 for d in degrees if d == 3)
         v4 = sum(1 for d in degrees if d == 4)
         v5 = sum(1 for d in degrees if d == 5)
         v6 = sum(1 for d in degrees if d == 6)
-        vlarge = n - v3 - v4 - v5 - v6
+        vlarge = sum(1 for d in degrees if d >= 7)
         vectors.append((v3, v4, v5, v6, vlarge))
-
-    def backtrack(mask: int, chosen: int) -> None:
-        nonlocal seen
-        if max_count is not None and seen >= max_count:
-            return
-        if chosen == target_edges:
-            record_vector()
-            seen += 1
-            return
-        if mask == 0:
-            return
-        if chosen + mask.bit_count() < target_edges:
-            return
-
-        v = choose_vertex(mask)
-        if v < 0:
-            return
-
-        i, j = segments[v]
-        degrees[i] += 1
-        degrees[j] += 1
-        backtrack(mask & ~(1 << v) & ~adj[v], chosen + 1)
-        degrees[i] -= 1
-        degrees[j] -= 1
-
-        if max_count is not None and seen >= max_count:
-            return
-        backtrack(mask & ~(1 << v), chosen)
-
-    backtrack((1 << m) - 1, 0)
     return vectors
 
 

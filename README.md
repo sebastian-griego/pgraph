@@ -18,8 +18,8 @@ Python tooling
   JSON-specified LP).
 - `scripts/mine_degree_vectors.py`: enumerate triangulations for small point
   sets and collect degree vectors.
-- `scripts/optimize_weights.py`: use SciPy to fit charging weights to sampled
-  degree vectors.
+- `scripts/optimize_weights.py`: use SciPy to fit a bound `a*n+b` against sampled
+  degree vectors (weights fixed by default; use `--free-weights` to vary them).
 
 Lean entry points
 -----------------

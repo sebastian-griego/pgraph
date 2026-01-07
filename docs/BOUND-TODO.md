@@ -87,4 +87,5 @@ Helper tooling
   sets and writes degree vectors to JSON. This is the data source for refining
   degree constraints.
 - `scripts/optimize_weights.py` uses SciPy to fit charging weights (and a linear
-  bound `a*n+b`) against the sampled vectors.
+  bound `a*n+b`) against the sampled vectors. By default the weights are fixed
+  at their visibility bounds; pass `--free-weights` to let them vary.
