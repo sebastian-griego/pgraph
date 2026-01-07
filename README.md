@@ -17,11 +17,16 @@ Python tooling
 - `scripts/optimize_charging.py`: exact LP solver for charging bounds (deg34 or a
   JSON-specified LP).
 - `scripts/mine_degree_vectors.py`: enumerate triangulations for small point
-  sets and collect degree vectors.
+  sets and collect degree vectors (use `--append` to merge with an existing
+  dataset, or `--random-triangulations` to sample greedily, plus `--max-time`
+  to cap long runs).
 - `scripts/optimize_weights.py`: use SciPy to fit a bound `a*n+b` against sampled
   degree vectors (weights fixed by default; use `--free-weights` to vary them).
 - `scripts/solve_rational.py`: solve the weight LP and snap-fit an exact rational
-  certificate for the mined degree vectors.
+  certificate for the mined degree vectors (supports `--min-n/--max-n` to
+  explore shifted bounds).
+- `scripts/search_degree_inequalities.py`: search for simple linear inequalities
+  satisfied by mined degree vectors, to suggest candidate geometric constraints.
 
 Lean entry points
 -----------------

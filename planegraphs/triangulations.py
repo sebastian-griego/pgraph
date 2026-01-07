@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import Counter
+import random
 from typing import Iterable
 
 from .crossing_graph import crossing_graph
@@ -60,6 +61,31 @@ def enumerate_triangulations(
 
     bron_kerbosch(set(), set(range(m)), set())
     return results
+
+
+def random_triangulation(
+    points: Iterable[Point],
+    rng: random.Random,
+) -> list[tuple[int, int]]:
+    """Generate a maximal non-crossing edge set by greedy insertion."""
+    pts = list(points)
+    segments, adj = crossing_graph(pts)
+    return random_triangulation_from_graph(segments, adj, rng)
+
+
+def random_triangulation_from_graph(
+    segments: list[tuple[int, int]],
+    adj: list[int],
+    rng: random.Random,
+) -> list[tuple[int, int]]:
+    """Generate a maximal non-crossing edge set from a crossing graph."""
+    order = list(range(len(segments)))
+    rng.shuffle(order)
+    chosen_mask = 0
+    for idx in order:
+        if adj[idx] & chosen_mask == 0:
+            chosen_mask |= 1 << idx
+    return [segments[i] for i in range(len(segments)) if (chosen_mask >> i) & 1]
 
 
 def triangulation_degree_vectors(

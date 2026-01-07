@@ -108,12 +108,26 @@ def main() -> None:
     parser.add_argument("--free-weights", action="store_true")
     parser.add_argument("--out")
     parser.add_argument("--k-name", default="K_deg56")
+    parser.add_argument("--min-n", type=int)
+    parser.add_argument("--max-n", type=int)
     parser.add_argument("--max-den", type=int, default=1000)
     args = parser.parse_args()
 
     vectors = _load_vectors(args.data)
     if not vectors:
         raise SystemExit("no vectors found in input")
+    if args.min_n is not None or args.max_n is not None:
+        filtered = []
+        for vec in vectors:
+            n = sum(vec)
+            if args.min_n is not None and n < args.min_n:
+                continue
+            if args.max_n is not None and n > args.max_n:
+                continue
+            filtered.append(vec)
+        vectors = filtered
+        if not vectors:
+            raise SystemExit("no vectors left after filtering by n")
     print(f"Loaded {len(vectors)} vectors.")
 
     if args.free_weights:

@@ -9,12 +9,16 @@ namespace PlaneGraphs
 def H : Nat := 3
 def K_deg34_cert : ℚ := (exampleCertificate.getQ? "K_deg34").getD 0
 def K_deg56_sample_main : ℚ := K_deg56_sample
+def K_deg56_shift_sample_main : ℚ := K_deg56_shift_sample
 
 lemma K_deg34_cert_pos : 0 < K_deg34_cert := by
   simp [K_deg34_cert, exampleCertificate_getQ_deg34]
 
 lemma K_deg56_sample_main_pos : 0 < K_deg56_sample_main := by
   simpa [K_deg56_sample_main] using K_deg56_sample_pos
+
+lemma K_deg56_shift_sample_main_pos : 0 < K_deg56_shift_sample_main := by
+  simpa [K_deg56_shift_sample_main] using K_deg56_shift_sample_pos
 
 theorem counterexample_12_15_with_hull (_h : HullSize trianglePoints ≤ H) :
     (pg trianglePoints : ℚ) < (243 / 20 : ℚ) ^ (3 : ℕ) := by
@@ -178,5 +182,168 @@ theorem main_lower_bound_deg56_sample_prefactor
   intro n hn
   exact pg_min_class_prefactor (K := K_deg56_sample_main) (hK := K_deg56_sample_main_pos)
     (C := C) (hgood := hgood) (hdel := hdel) (N := N) (havg := hav) (n := n) hn
+
+theorem main_lower_bound_deg56_shift_sample
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hav : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      avgIso P ≤ (n : ℚ) / K_deg56_shift_sample_main) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_shift_sample_main ^ (n - N) := by
+  intro n hn
+  exact pg_min_class_shifted (K := K_deg56_shift_sample_main)
+    (hK := K_deg56_shift_sample_main_pos) (C := C) (hgood := hgood) (hdel := hdel)
+    (N := N) (havg := hav) (n := n) hn
+
+theorem main_lower_bound_deg56_shift_sample_prefactor
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hav : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      avgIso P ≤ (n : ℚ) / K_deg56_shift_sample_main) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        ((pg_min_class C hgood N : ℚ) / K_deg56_shift_sample_main ^ N) *
+          K_deg56_shift_sample_main ^ n := by
+  intro n hn
+  exact pg_min_class_prefactor (K := K_deg56_shift_sample_main)
+    (hK := K_deg56_shift_sample_main_pos) (C := C) (hgood := hgood) (hdel := hdel)
+    (N := N) (havg := hav) (n := n) hn
+
+theorem main_lower_bound_deg56_shift_balance
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hdata : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      ∃ v3 v4 v5 v6 vL : ℚ,
+        avgIso P ≤ v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+          v6 * w6_shift_sample + vL * wL_shift_sample ∧
+        v3 + v4 + v5 + v6 + vL = (n : ℚ) ∧
+        22 * v3 ≤ 2 * v4 + 14 * v5 + 20 * v6 + 23 * vL) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_shift_sample_main ^ (n - N) := by
+  intro n hn
+  have havg :
+      ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+        avgIso P ≤ (n : ℚ) / K_deg56_shift_sample_main := by
+    intro n hn' P hP
+    rcases hdata hn' P hP with ⟨v3, v4, v5, v6, vL, havg, hsum, hbal⟩
+    have hbound :=
+      avgIso_le_deg56_shift_of_balance (P := P) (v3 := v3) (v4 := v4)
+        (v5 := v5) (v6 := v6) (vlarge := vL) havg hsum hbal
+    simpa [K_deg56_shift_sample_main] using hbound
+  exact pg_min_class_shifted (K := K_deg56_shift_sample_main)
+    (hK := K_deg56_shift_sample_main_pos) (C := C) (hgood := hgood)
+    (hdel := hdel) (N := N) (havg := havg) (n := n) hn
+
+theorem main_lower_bound_deg56_shift_sumLarge
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hdata : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      ∃ v3 v4 v5 v6 vL sumLarge : ℚ,
+        avgIso P ≤ v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+          v6 * w6_shift_sample + vL * wL_shift_sample ∧
+        v3 + v4 + v5 + v6 + vL = (n : ℚ) ∧
+        sumLarge = 3 * v3 + 2 * v4 + v5 + 6 * vL - 12 ∧
+        sumLarge ≥ 25 * v3 - 13 * v5 - 20 * v6 - 17 * vL - 12) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_shift_sample_main ^ (n - N) := by
+  intro n hn
+  have havg :
+      ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+        avgIso P ≤ (n : ℚ) / K_deg56_shift_sample_main := by
+    intro n hn' P hP
+    rcases hdata hn' P hP with ⟨v3, v4, v5, v6, vL, sumLarge, havg, hsum, hsumLarge, hlarge⟩
+    have hbound :=
+      avgIso_le_deg56_shift_of_sumLarge (P := P) (v3 := v3) (v4 := v4)
+        (v5 := v5) (v6 := v6) (vL := vL) (sumLarge := sumLarge)
+        havg hsum hsumLarge hlarge
+    simpa [K_deg56_shift_sample_main] using hbound
+  exact pg_min_class_shifted (K := K_deg56_shift_sample_main)
+    (hK := K_deg56_shift_sample_main_pos) (C := C) (hgood := hgood)
+    (hdel := hdel) (N := N) (havg := havg) (n := n) hn
+
+theorem main_lower_bound_deg56_linear
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hdata : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      ∃ v3 v4 v5 v6 vL : ℚ,
+        avgIso P ≤ v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+          v6 * w6_sample + vL * wL_sample ∧
+        v3 + v4 + v5 + v6 + vL = (n : ℚ) ∧
+        45 * v3 + 21 * v4 + 9 * v5 + 3 * v6 ≤ 25 * (n : ℚ)) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_sample_main ^ (n - N) := by
+  intro n hn
+  have havg :
+      ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+        avgIso P ≤ (n : ℚ) / K_deg56_sample_main := by
+    intro n hn' P hP
+    rcases hdata hn' P hP with ⟨v3, v4, v5, v6, vL, havg, hsum, hlin⟩
+    have hbound :=
+      avgIso_le_deg56_of_linear (P := P) (v3 := v3) (v4 := v4)
+        (v5 := v5) (v6 := v6) (vlarge := vL)
+        havg hsum hlin
+    simpa [K_deg56_sample_main] using hbound
+  exact pg_min_class_shifted (K := K_deg56_sample_main)
+    (hK := K_deg56_sample_main_pos) (C := C) (hgood := hgood)
+    (hdel := hdel) (N := N) (havg := havg) (n := n) hn
+
+theorem main_lower_bound_deg56_shift_linear
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hdata : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      ∃ v3 v4 v5 v6 vL : ℚ,
+        avgIso P ≤ v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+          v6 * w6_shift_sample + vL * wL_shift_sample ∧
+        v3 + v4 + v5 + v6 + vL = (n : ℚ) ∧
+        45 * v3 + 21 * v4 + 9 * v5 + 3 * v6 ≤ 23 * (n : ℚ)) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_shift_sample_main ^ (n - N) := by
+  intro n hn
+  have havg :
+      ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+        avgIso P ≤ (n : ℚ) / K_deg56_shift_sample_main := by
+    intro n hn' P hP
+    rcases hdata hn' P hP with ⟨v3, v4, v5, v6, vL, havg, hsum, hlin⟩
+    have hbound :=
+      avgIso_le_deg56_shift_of_linear (P := P) (v3 := v3) (v4 := v4)
+        (v5 := v5) (v6 := v6) (vlarge := vL)
+        havg hsum hlin
+    simpa [K_deg56_shift_sample_main] using hbound
+  exact pg_min_class_shifted (K := K_deg56_shift_sample_main)
+    (hK := K_deg56_shift_sample_main_pos) (C := C) (hgood := hgood)
+    (hdel := hdel) (N := N) (havg := havg) (n := n) hn
+
+theorem main_lower_bound_deg56_sumLarge
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hdata : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      ∃ v3 v4 v5 v6 vL sumLarge : ℚ,
+        avgIso P ≤ v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+          v6 * w6_sample + vL * wL_sample ∧
+        v3 + v4 + v5 + v6 + vL = (n : ℚ) ∧
+        sumLarge = 3 * v3 + 2 * v4 + v5 + 6 * vL - 12 ∧
+        sumLarge ≥ 23 * v3 - 2 * v4 - 15 * v5 - 22 * v6 - 19 * vL - 12) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_sample_main ^ (n - N) := by
+  intro n hn
+  have havg :
+      ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+        avgIso P ≤ (n : ℚ) / K_deg56_sample_main := by
+    intro n hn' P hP
+    rcases hdata hn' P hP with ⟨v3, v4, v5, v6, vL, sumLarge, havg, hsum, hsumLarge, hlarge⟩
+    have hbound :=
+      avgIso_le_deg56_of_sumLarge (P := P) (v3 := v3) (v4 := v4)
+        (v5 := v5) (v6 := v6) (vL := vL) (sumLarge := sumLarge)
+        havg hsum hsumLarge hlarge
+    simpa [K_deg56_sample_main] using hbound
+  exact pg_min_class_shifted (K := K_deg56_sample_main)
+    (hK := K_deg56_sample_main_pos) (C := C) (hgood := hgood)
+    (hdel := hdel) (N := N) (havg := havg) (n := n) hn
 
 end PlaneGraphs

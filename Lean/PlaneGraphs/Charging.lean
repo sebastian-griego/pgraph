@@ -1,6 +1,7 @@
 import Mathlib
 import PlaneGraphs.ExpectationLemma
 import PlaneGraphs.Certificate
+import PlaneGraphs.DegreeCounts
 
 open scoped BigOperators
 
@@ -162,5 +163,226 @@ lemma avgIso_le_deg56_of_split {n : ℕ} (P : PointSet n)
         v6 * w6_sample + vlarge * wL_sample ≤ (n : ℚ) / K_deg56_sample) :
     avgIso P ≤ (n : ℚ) / K_deg56_sample := by
   exact le_trans havg hbound
+
+lemma charge_bound_deg56_iff {v3 v4 v5 v6 vL : ℚ} :
+    v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+        v6 * w6_sample + vL * wL_sample
+      ≤ (v3 + v4 + v5 + v6 + vL) / K_deg56_sample
+      ↔ 20 * v3 ≤ 4 * v4 + 16 * v5 + 22 * v6 + 25 * vL := by
+  have hK : K_deg56_sample = (96 / 7 : ℚ) := by
+    simp [K_deg56_sample, deg56SampleCertificate_getQ_K_deg56]
+  have hw3 : w3_sample = (1 / 8 : ℚ) := by
+    simp [w3_sample, deg56SampleCertificate_getQ_w3]
+  have hw4 : w4_sample = (1 / 16 : ℚ) := by
+    simp [w4_sample, deg56SampleCertificate_getQ_w4]
+  have hw5 : w5_sample = (1 / 32 : ℚ) := by
+    simp [w5_sample, deg56SampleCertificate_getQ_w5]
+  have hw6 : w6_sample = (1 / 64 : ℚ) := by
+    simp [w6_sample, deg56SampleCertificate_getQ_w6]
+  have hwL : wL_sample = (1 / 128 : ℚ) := by
+    simp [wL_sample, deg56SampleCertificate_getQ_wL]
+  constructor
+  · intro h
+    have h' :
+        v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128
+          ≤ (v3 + v4 + v5 + v6 + vL) * (7 / 96 : ℚ) := by
+      simpa [hK, hw3, hw4, hw5, hw6, hwL, div_eq_mul_inv] using h
+    have h'' :
+        384 * (v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128)
+          ≤ 384 * ((v3 + v4 + v5 + v6 + vL) * (7 / 96 : ℚ)) :=
+      (mul_le_mul_of_nonneg_left h' (by norm_num : (0 : ℚ) ≤ 384))
+    have h''' :
+        48 * v3 + 24 * v4 + 12 * v5 + 6 * v6 + 3 * vL
+          ≤ 28 * (v3 + v4 + v5 + v6 + vL) := by
+      nlinarith [h'']
+    linarith [h''']
+  · intro h
+    have h' :
+        48 * v3 + 24 * v4 + 12 * v5 + 6 * v6 + 3 * vL
+          ≤ 28 * (v3 + v4 + v5 + v6 + vL) := by
+      linarith
+    have h'' :
+        384 * (v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128)
+          ≤ 384 * ((v3 + v4 + v5 + v6 + vL) * (7 / 96 : ℚ)) := by
+      nlinarith [h']
+    have h''' :
+        v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128
+          ≤ (v3 + v4 + v5 + v6 + vL) * (7 / 96 : ℚ) := by
+      nlinarith [h'']
+    simpa [hK, hw3, hw4, hw5, hw6, hwL, div_eq_mul_inv] using h'''
+
+lemma avgIso_le_deg56_of_balance {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vlarge : ℚ}
+    (havg :
+      avgIso P ≤ v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+        v6 * w6_sample + vlarge * wL_sample)
+    (hsum : v3 + v4 + v5 + v6 + vlarge = (n : ℚ))
+    (hbal : 20 * v3 ≤ 4 * v4 + 16 * v5 + 22 * v6 + 25 * vlarge) :
+    avgIso P ≤ (n : ℚ) / K_deg56_sample := by
+  have hbound :
+      v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+        v6 * w6_sample + vlarge * wL_sample ≤ (n : ℚ) / K_deg56_sample := by
+    have hbalance :
+        v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+          v6 * w6_sample + vlarge * wL_sample
+            ≤ (v3 + v4 + v5 + v6 + vlarge) / K_deg56_sample := by
+      exact (charge_bound_deg56_iff (v3 := v3) (v4 := v4) (v5 := v5)
+        (v6 := v6) (vL := vlarge)).2 hbal
+    simpa [hsum] using hbalance
+  exact le_trans havg hbound
+
+lemma avgIso_le_deg56_of_linear {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vlarge : ℚ}
+    (havg :
+      avgIso P ≤ v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+        v6 * w6_sample + vlarge * wL_sample)
+    (hsum : v3 + v4 + v5 + v6 + vlarge = (n : ℚ))
+    (hlin : 45 * v3 + 21 * v4 + 9 * v5 + 3 * v6 ≤ 25 * (n : ℚ)) :
+    avgIso P ≤ (n : ℚ) / K_deg56_sample := by
+  have hbal :
+      20 * v3 ≤ 4 * v4 + 16 * v5 + 22 * v6 + 25 * vlarge := by
+    exact deg56_balance_of_linear (v3 := v3) (v4 := v4) (v5 := v5)
+      (v6 := v6) (vL := vlarge) (n := (n : ℚ)) hsum hlin
+  exact avgIso_le_deg56_of_balance (P := P) (v3 := v3) (v4 := v4) (v5 := v5)
+    (v6 := v6) (vlarge := vlarge) havg hsum hbal
+
+lemma avgIso_le_deg56_of_sumLarge {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vL sumLarge : ℚ}
+    (havg :
+      avgIso P ≤ v3 * w3_sample + v4 * w4_sample + v5 * w5_sample +
+        v6 * w6_sample + vL * wL_sample)
+    (hsum : v3 + v4 + v5 + v6 + vL = (n : ℚ))
+    (hsumLarge : sumLarge = 3 * v3 + 2 * v4 + v5 + 6 * vL - 12)
+    (hlarge :
+      sumLarge ≥ 23 * v3 - 2 * v4 - 15 * v5 - 22 * v6 - 19 * vL - 12) :
+    avgIso P ≤ (n : ℚ) / K_deg56_sample := by
+  have hbal :
+      20 * v3 ≤ 4 * v4 + 16 * v5 + 22 * v6 + 25 * vL := by
+    exact (deg56_balance_iff_sumLarge (v3 := v3) (v4 := v4) (v5 := v5)
+      (v6 := v6) (vL := vL) (sumLarge := sumLarge) hsumLarge).2 hlarge
+  exact avgIso_le_deg56_of_balance (P := P) (v3 := v3) (v4 := v4) (v5 := v5)
+    (v6 := v6) (vlarge := vL) havg hsum hbal
+
+def K_deg56_shift_sample : ℚ :=
+  (deg56ShiftSampleCertificate.getQ? "K_deg56_shift").getD 0
+
+def w3_shift_sample : ℚ := (deg56ShiftSampleCertificate.getQ? "w3").getD 0
+def w4_shift_sample : ℚ := (deg56ShiftSampleCertificate.getQ? "w4").getD 0
+def w5_shift_sample : ℚ := (deg56ShiftSampleCertificate.getQ? "w5").getD 0
+def w6_shift_sample : ℚ := (deg56ShiftSampleCertificate.getQ? "w6").getD 0
+def wL_shift_sample : ℚ := (deg56ShiftSampleCertificate.getQ? "wL").getD 0
+
+lemma K_deg56_shift_sample_pos : 0 < K_deg56_shift_sample := by
+  simp [K_deg56_shift_sample, deg56ShiftSampleCertificate_getQ_K_deg56_shift]
+
+lemma avgIso_le_deg56_shift_of_split {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vlarge : ℚ}
+    (havg :
+      avgIso P ≤ v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+        v6 * w6_shift_sample + vlarge * wL_shift_sample)
+    (hbound :
+      v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+        v6 * w6_shift_sample + vlarge * wL_shift_sample ≤ (n : ℚ) / K_deg56_shift_sample) :
+    avgIso P ≤ (n : ℚ) / K_deg56_shift_sample := by
+  exact le_trans havg hbound
+
+lemma charge_bound_deg56_shift_iff {v3 v4 v5 v6 vL : ℚ} :
+    v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+        v6 * w6_shift_sample + vL * wL_shift_sample
+      ≤ (v3 + v4 + v5 + v6 + vL) / K_deg56_shift_sample
+      ↔ 22 * v3 ≤ 2 * v4 + 14 * v5 + 20 * v6 + 23 * vL := by
+  have hK : K_deg56_shift_sample = (192 / 13 : ℚ) := by
+    simp [K_deg56_shift_sample, deg56ShiftSampleCertificate_getQ_K_deg56_shift]
+  have hw3 : w3_shift_sample = (1 / 8 : ℚ) := by
+    simp [w3_shift_sample, deg56ShiftSampleCertificate_getQ_w3]
+  have hw4 : w4_shift_sample = (1 / 16 : ℚ) := by
+    simp [w4_shift_sample, deg56ShiftSampleCertificate_getQ_w4]
+  have hw5 : w5_shift_sample = (1 / 32 : ℚ) := by
+    simp [w5_shift_sample, deg56ShiftSampleCertificate_getQ_w5]
+  have hw6 : w6_shift_sample = (1 / 64 : ℚ) := by
+    simp [w6_shift_sample, deg56ShiftSampleCertificate_getQ_w6]
+  have hwL : wL_shift_sample = (1 / 128 : ℚ) := by
+    simp [wL_shift_sample, deg56ShiftSampleCertificate_getQ_wL]
+  constructor
+  · intro h
+    have h' :
+        v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128
+          ≤ (v3 + v4 + v5 + v6 + vL) * (13 / 192 : ℚ) := by
+      simpa [hK, hw3, hw4, hw5, hw6, hwL, div_eq_mul_inv] using h
+    have h'' :
+        384 * (v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128)
+          ≤ 384 * ((v3 + v4 + v5 + v6 + vL) * (13 / 192 : ℚ)) :=
+      (mul_le_mul_of_nonneg_left h' (by norm_num : (0 : ℚ) ≤ 384))
+    have h''' :
+        48 * v3 + 24 * v4 + 12 * v5 + 6 * v6 + 3 * vL
+          ≤ 26 * (v3 + v4 + v5 + v6 + vL) := by
+      nlinarith [h'']
+    linarith [h''']
+  · intro h
+    have h' :
+        48 * v3 + 24 * v4 + 12 * v5 + 6 * v6 + 3 * vL
+          ≤ 26 * (v3 + v4 + v5 + v6 + vL) := by
+      linarith
+    have h'' :
+        384 * (v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128)
+          ≤ 384 * ((v3 + v4 + v5 + v6 + vL) * (13 / 192 : ℚ)) := by
+      nlinarith [h']
+    have h''' :
+        v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128
+          ≤ (v3 + v4 + v5 + v6 + vL) * (13 / 192 : ℚ) := by
+      nlinarith [h'']
+    simpa [hK, hw3, hw4, hw5, hw6, hwL, div_eq_mul_inv] using h'''
+
+lemma avgIso_le_deg56_shift_of_balance {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vlarge : ℚ}
+    (havg :
+      avgIso P ≤ v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+        v6 * w6_shift_sample + vlarge * wL_shift_sample)
+    (hsum : v3 + v4 + v5 + v6 + vlarge = (n : ℚ))
+    (hbal : 22 * v3 ≤ 2 * v4 + 14 * v5 + 20 * v6 + 23 * vlarge) :
+    avgIso P ≤ (n : ℚ) / K_deg56_shift_sample := by
+  have hbound :
+      v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+        v6 * w6_shift_sample + vlarge * wL_shift_sample
+        ≤ (v3 + v4 + v5 + v6 + vlarge) / K_deg56_shift_sample := by
+    exact (charge_bound_deg56_shift_iff (v3 := v3) (v4 := v4) (v5 := v5) (v6 := v6)
+      (vL := vlarge)).2 hbal
+  have hbound' :
+      v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+        v6 * w6_shift_sample + vlarge * wL_shift_sample ≤ (n : ℚ) / K_deg56_shift_sample := by
+    simpa [hsum] using hbound
+  exact le_trans havg hbound'
+
+lemma avgIso_le_deg56_shift_of_linear {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vlarge : ℚ}
+    (havg :
+      avgIso P ≤ v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+        v6 * w6_shift_sample + vlarge * wL_shift_sample)
+    (hsum : v3 + v4 + v5 + v6 + vlarge = (n : ℚ))
+    (hlin : 45 * v3 + 21 * v4 + 9 * v5 + 3 * v6 ≤ 23 * (n : ℚ)) :
+    avgIso P ≤ (n : ℚ) / K_deg56_shift_sample := by
+  have hbal :
+      22 * v3 ≤ 2 * v4 + 14 * v5 + 20 * v6 + 23 * vlarge := by
+    exact deg56_shift_balance_of_linear (v3 := v3) (v4 := v4) (v5 := v5)
+      (v6 := v6) (vL := vlarge) (n := (n : ℚ)) hsum hlin
+  exact avgIso_le_deg56_shift_of_balance (P := P) (v3 := v3) (v4 := v4) (v5 := v5)
+    (v6 := v6) (vlarge := vlarge) havg hsum hbal
+
+lemma avgIso_le_deg56_shift_of_sumLarge {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vL sumLarge : ℚ}
+    (havg :
+      avgIso P ≤ v3 * w3_shift_sample + v4 * w4_shift_sample + v5 * w5_shift_sample +
+        v6 * w6_shift_sample + vL * wL_shift_sample)
+    (hsum : v3 + v4 + v5 + v6 + vL = (n : ℚ))
+    (hsumLarge : sumLarge = 3 * v3 + 2 * v4 + v5 + 6 * vL - 12)
+    (hlarge :
+      sumLarge ≥ 25 * v3 - 13 * v5 - 20 * v6 - 17 * vL - 12) :
+    avgIso P ≤ (n : ℚ) / K_deg56_shift_sample := by
+  have hbal :
+      22 * v3 ≤ 2 * v4 + 14 * v5 + 20 * v6 + 23 * vL := by
+    exact (deg56_shift_balance_iff_sumLarge (v3 := v3) (v4 := v4) (v5 := v5)
+      (v6 := v6) (vL := vL) (sumLarge := sumLarge) hsumLarge).2 hlarge
+  exact avgIso_le_deg56_shift_of_balance (P := P) (v3 := v3) (v4 := v4) (v5 := v5)
+    (v6 := v6) (vlarge := vL) havg hsum hbal
 
 end PlaneGraphs

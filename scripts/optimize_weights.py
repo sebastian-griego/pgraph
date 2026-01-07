@@ -64,6 +64,8 @@ def main() -> None:
     parser.add_argument("--w5-max", type=float, default=1 / 32)
     parser.add_argument("--w6-max", type=float, default=1 / 64)
     parser.add_argument("--wlarge-max", type=float, default=1 / 128)
+    parser.add_argument("--fix-w3", type=float)
+    parser.add_argument("--normalize-sum", type=float)
     parser.add_argument("--monotone", action="store_true")
     parser.add_argument("--monotonic", action="store_true", help="alias for --monotone")
     parser.add_argument("--no-shift", action="store_true")
@@ -128,15 +130,33 @@ def main() -> None:
             (args.wlarge_max, args.wlarge_max),
         ]
 
+    if args.fix_w3 is not None:
+        weight_bounds[0] = (args.fix_w3, args.fix_w3)
+
     bounds = weight_bounds + [(0.0, None)]  # a
     if use_shift:
         bounds.append((-float(max_n), 0.0))  # b <= 0
+
+    A_eq = None
+    b_eq = None
+    if args.normalize_sum is not None:
+        row = [1.0, 1.0, 1.0, 1.0, 1.0] + ([0.0, 0.0] if use_shift else [0.0])
+        A_eq = [row]
+        b_eq = [args.normalize_sum]
 
     # Objective: minimize a (last or second-to-last variable).
     c = [0.0] * num_vars
     c[5] = 1.0
 
-    res = linprog(c, A_ub=A_ub, b_ub=b_ub, bounds=bounds, method="highs")
+    res = linprog(
+        c,
+        A_ub=A_ub,
+        b_ub=b_ub,
+        A_eq=A_eq,
+        b_eq=b_eq,
+        bounds=bounds,
+        method="highs",
+    )
     if not res.success:
         raise SystemExit(f"optimization failed: {res.message}")
 

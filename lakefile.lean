@@ -12,6 +12,8 @@ lean_lib PlaneGraphs where
   roots := #[
     `PlaneGraphs.Basic,
     `PlaneGraphs.Certificate,
+    `PlaneGraphs.DegreeCounts,
+    `PlaneGraphs.DegreeVectors,
     `PlaneGraphs.Asymptotic,
     `PlaneGraphs.ExpectationLemma,
     `PlaneGraphs.Charging,

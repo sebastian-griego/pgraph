@@ -77,6 +77,9 @@ def exampleCertificate : Certificate :=
 def deg56SampleCertificate : Certificate :=
   load_certificate "certificates/deg56_sample.json"
 
+def deg56ShiftSampleCertificate : Certificate :=
+  load_certificate "certificates/deg56_shift_sample.json"
+
 lemma exampleCertificate_constants :
     exampleCertificate.constants =
       [("K_12_15", 243, 20), ("K_23_32", 583, 25), ("K_deg34", 112, 11)] := by
@@ -122,6 +125,36 @@ lemma deg56SampleCertificate_getQ_w6 :
 
 lemma deg56SampleCertificate_getQ_wL :
     deg56SampleCertificate.getQ? "wL" = some (1 / 128 : ℚ) := by
+  rfl
+
+lemma deg56ShiftSampleCertificate_constants :
+    deg56ShiftSampleCertificate.constants =
+      [("K_deg56_shift", 192, 13), ("w3", 1, 8), ("w4", 1, 16), ("w5", 1, 32),
+        ("w6", 1, 64), ("wL", 1, 128)] := by
+  rfl
+
+lemma deg56ShiftSampleCertificate_getQ_K_deg56_shift :
+    deg56ShiftSampleCertificate.getQ? "K_deg56_shift" = some (192 / 13 : ℚ) := by
+  rfl
+
+lemma deg56ShiftSampleCertificate_getQ_w3 :
+    deg56ShiftSampleCertificate.getQ? "w3" = some (1 / 8 : ℚ) := by
+  rfl
+
+lemma deg56ShiftSampleCertificate_getQ_w4 :
+    deg56ShiftSampleCertificate.getQ? "w4" = some (1 / 16 : ℚ) := by
+  rfl
+
+lemma deg56ShiftSampleCertificate_getQ_w5 :
+    deg56ShiftSampleCertificate.getQ? "w5" = some (1 / 32 : ℚ) := by
+  rfl
+
+lemma deg56ShiftSampleCertificate_getQ_w6 :
+    deg56ShiftSampleCertificate.getQ? "w6" = some (1 / 64 : ℚ) := by
+  rfl
+
+lemma deg56ShiftSampleCertificate_getQ_wL :
+    deg56ShiftSampleCertificate.getQ? "wL" = some (1 / 128 : ℚ) := by
   rfl
 
 end PlaneGraphs
