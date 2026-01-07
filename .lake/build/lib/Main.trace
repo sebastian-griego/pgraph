@@ -5,4 +5,4 @@
   {"message":
    "././Lean/./Main.lean:159:0: 'PlaneGraphs.main_lower_bound_deg34' depends on axioms: [propext, Quot.sound, Classical.choice]",
    "level": "info"}],
- "depHash": "6399164010266271382"}
+ "depHash": "17990068467144122109"}

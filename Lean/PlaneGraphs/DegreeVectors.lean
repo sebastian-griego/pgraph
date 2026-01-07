@@ -4,6 +4,8 @@ import PlaneGraphs.Charging
 open Lean
 open Lean.Elab Term
 
+set_option maxRecDepth 5000
+
 namespace PlaneGraphs
 
 structure DegreeVector where
@@ -207,26 +209,94 @@ lemma deg56SampleVectors_linear_forall :
   have hbal := deg56SampleVectors_balance_forall v hv
   exact (deg56Balance_iff_linear v).1 hbal
 
-lemma deg56FastVectors_ok :
-    AllOkDeg56 deg56FastVectors := by
+lemma deg56FastVectors_not_balance :
+    ¬ AllBalanceDeg56 deg56FastVectors := by
   native_decide
 
-lemma deg56FastVectors_ok_forall :
-    ∀ v ∈ deg56FastVectors, deg56Ok v := by
-  exact AllOkDeg56.forall_mem deg56FastVectors_ok
-
-lemma deg56FastVectors_balance :
-    AllBalanceDeg56 deg56FastVectors := by
+lemma deg56FastVectors_not_linear :
+    ¬ (∀ v ∈ deg56FastVectors, deg56LinearOk v) := by
   native_decide
 
-lemma deg56FastVectors_balance_forall :
-    ∀ v ∈ deg56FastVectors, deg56Balance v := by
-  exact AllBalanceDeg56.forall_mem deg56FastVectors_balance
+def deg56FastVectorsN12 : List DegreeVector :=
+  deg56FastVectors.filter (fun v => 12 ≤ v.n)
 
-lemma deg56FastVectors_linear_forall :
-    ∀ v ∈ deg56FastVectors, deg56LinearOk v := by
+def deg56N12Ok (v : DegreeVector) : Prop :=
+  v.charge w3_n12_sample w4_n12_sample w5_n12_sample w6_n12_sample wL_n12_sample ≤
+    (v.n : ℚ) / K_deg56_n12_sample
+
+instance (v : DegreeVector) : Decidable (deg56N12Ok v) := by
+  dsimp [deg56N12Ok]
+  exact Rat.instDecidableLe _ _
+
+def deg56N12LinearOk (v : DegreeVector) : Prop :=
+  64 * (v.v3 : ℚ) + 32 * (v.v4 : ℚ) + 16 * (v.v5 : ℚ) +
+    8 * (v.v6 : ℚ) + 4 * (v.vL : ℚ) ≤ 37 * (v.n : ℚ)
+
+instance (v : DegreeVector) : Decidable (deg56N12LinearOk v) := by
+  dsimp [deg56N12LinearOk]
+  exact Rat.instDecidableLe _ _
+
+lemma deg56N12Ok_iff_linear (v : DegreeVector) :
+    deg56N12Ok v ↔ deg56N12LinearOk v := by
+  simpa [deg56N12Ok, DegreeVector.charge, DegreeVector.n, deg56N12LinearOk] using
+    (charge_bound_deg56_n12_iff
+      (v3 := (v.v3 : ℚ))
+      (v4 := (v.v4 : ℚ))
+      (v5 := (v.v5 : ℚ))
+      (v6 := (v.v6 : ℚ))
+      (vL := (v.vL : ℚ)))
+
+def AllOkDeg56N12 : List DegreeVector → Prop
+  | [] => True
+  | v :: vs => deg56N12Ok v ∧ AllOkDeg56N12 vs
+
+instance : Decidable (AllOkDeg56N12 vs) := by
+  induction vs with
+  | nil =>
+      exact isTrue trivial
+  | cons v vs ih =>
+      letI : Decidable (deg56N12Ok v) := inferInstance
+      letI : Decidable (AllOkDeg56N12 vs) := ih
+      exact instDecidableAnd
+
+lemma AllOkDeg56N12.forall_mem :
+    ∀ {vs}, AllOkDeg56N12 vs → ∀ v ∈ vs, deg56N12Ok v
+  | [], _h => by
+      intro v hv
+      cases hv
+  | v :: vs, h => by
+      intro v' hv'
+      have h' : deg56N12Ok v ∧ AllOkDeg56N12 vs := h
+      cases h' with
+      | intro hv hvs =>
+          have hv' : v' = v ∨ v' ∈ vs := by
+            simpa [List.mem_cons] using hv'
+          cases hv' with
+          | inl hEq =>
+              simpa [hEq] using hv
+          | inr hMem =>
+              exact AllOkDeg56N12.forall_mem hvs v' hMem
+
+lemma deg56FastVectorsN12_ok :
+    AllOkDeg56N12 deg56FastVectorsN12 := by
+  native_decide
+
+lemma deg56FastVectorsN12_ok_forall :
+    ∀ v ∈ deg56FastVectorsN12, deg56N12Ok v := by
+  exact AllOkDeg56N12.forall_mem deg56FastVectorsN12_ok
+
+lemma deg56FastVectorsN12_balance :
+    AllBalanceDeg56 deg56FastVectorsN12 := by
+  native_decide
+
+lemma deg56FastVectorsN12_balance_forall :
+    ∀ v ∈ deg56FastVectorsN12, deg56Balance v := by
+  exact AllBalanceDeg56.forall_mem deg56FastVectorsN12_balance
+
+lemma deg56FastVectorsN12_linear_forall :
+    ∀ v ∈ deg56FastVectorsN12, deg56LinearOk v := by
   intro v hv
-  have hbal := deg56FastVectors_balance_forall v hv
+  have hbal := deg56FastVectorsN12_balance_forall v hv
   exact (deg56Balance_iff_linear v).1 hbal
 
 def deg56ShiftVectors : List DegreeVector :=

@@ -102,6 +102,8 @@ Helper tooling
   from mined vectors; it is not a proven bound yet.
 - `certificates/deg56_shift_sample.json` is the shifted (n≥9) sample certificate
   with `K_deg56_shift = 192/13`; it uses the same fixed weights.
+- `certificates/deg56_n12_sample.json` is the fixed-weight sample certificate
+  for the expanded dataset with `n≥12`, giving `K_deg56_n12 = 512/37`.
 - `Lean/PlaneGraphs/DegreeVectors.lean` loads `data/degree_vectors.json` and
   proves (by computation) that both the unshifted and shifted certificate
   inequalities hold for every mined vector (shifted restricted to `n ≥ 9`).
@@ -206,14 +208,21 @@ Helper tooling
 - `Lean/Main.lean` includes `main_lower_bound_deg56_sample*` and
   `main_lower_bound_deg56_shift_sample*` entry points that accept hypothetical
   `avgIso` bounds for the corresponding sample constants.
-- Current mined vectors up to `n=15` suggest the worst-case ratio for fixed
-  weights is attained at `n=8` by `(v3,v4,v5,v6,vL)=(4,0,0,4,0)`; for `n≥9`,
-  the worst case observed remains `(4,1,0,2,2)` giving `K=192/13`. Any Lean
-  proof that rules out the `n=8` pattern for large `n` will move the asymptotic
-  base.
-- `data/degree_vectors_new.json` is a fast-run dataset (currently n=6..12, random
-  triangulations, 574 unique vectors). On that sample, the deg56 balance expression
-  `4*v4 + 16*v5 + 22*v6 + 25*vL - 20*v3` has minimum 0 at `(2,2,2,0,0)`.
+- With the expanded mined vectors up to `n=14`, the fixed-weight worst case
+  appears at `n=11` with `(v3,v4,v5,v6,vL)=(6,0,0,2,3)`, so the data no longer
+  supports the older shifted bound `K=192/13`. For `n≥12`, the worst case in
+  the data is `(6,1,0,2,3)` with `K=512/37`. Any Lean proof that excludes the
+  `n=11` pattern for large `n` or proves a stronger global inequality will move
+  the asymptotic base.
+- `data/degree_vectors_new.json` is a fast-run dataset (currently n=6..14, random
+  triangulations, 1496 unique vectors). It contains counterexamples to the
+  deg56 balance/linear inequalities; see `data/deg56_balance_counterexample.json`
+  for an explicit hull-3 triangulation with `v3=6,v6=2,vL=3` (n=11) where
+  `45*v3 + 21*v4 + 9*v5 + 3*v6 = 276 > 25*n`. On the same dataset, the balance
+  inequality holds for all sampled vectors with `n ≥ 12` (see
+  `deg56FastVectorsN12_balance` in `Lean/PlaneGraphs/DegreeVectors.lean`).
+- `scripts/find_balance_counterexample.py` searches for explicit triangulations
+  that violate the deg56 balance/linear inequalities and writes a JSON witness.
 - `scripts/optimize_weights.py` now supports `--fix-w3` and `--normalize-sum`
   to avoid the degenerate free-weight solution `w4=w5=w6=wL=0`. On the current
   datasets, `--fix-w3 1/8` drives K to 16 (data-only artifact), while

@@ -263,6 +263,69 @@ lemma avgIso_le_deg56_of_sumLarge {n : ℕ} (P : PointSet n)
   exact avgIso_le_deg56_of_balance (P := P) (v3 := v3) (v4 := v4) (v5 := v5)
     (v6 := v6) (vlarge := vL) havg hsum hbal
 
+def K_deg56_n12_sample : ℚ :=
+  (deg56N12SampleCertificate.getQ? "K_deg56_n12").getD 0
+
+def w3_n12_sample : ℚ := (deg56N12SampleCertificate.getQ? "w3").getD 0
+def w4_n12_sample : ℚ := (deg56N12SampleCertificate.getQ? "w4").getD 0
+def w5_n12_sample : ℚ := (deg56N12SampleCertificate.getQ? "w5").getD 0
+def w6_n12_sample : ℚ := (deg56N12SampleCertificate.getQ? "w6").getD 0
+def wL_n12_sample : ℚ := (deg56N12SampleCertificate.getQ? "wL").getD 0
+
+lemma K_deg56_n12_sample_pos : 0 < K_deg56_n12_sample := by
+  simp [K_deg56_n12_sample, deg56N12SampleCertificate_getQ_K_deg56_n12]
+
+lemma avgIso_le_deg56_n12_of_split {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vlarge : ℚ}
+    (havg :
+      avgIso P ≤ v3 * w3_n12_sample + v4 * w4_n12_sample + v5 * w5_n12_sample +
+        v6 * w6_n12_sample + vlarge * wL_n12_sample)
+    (hbound :
+      v3 * w3_n12_sample + v4 * w4_n12_sample + v5 * w5_n12_sample +
+        v6 * w6_n12_sample + vlarge * wL_n12_sample ≤ (n : ℚ) / K_deg56_n12_sample) :
+    avgIso P ≤ (n : ℚ) / K_deg56_n12_sample := by
+  exact le_trans havg hbound
+
+lemma charge_bound_deg56_n12_iff {v3 v4 v5 v6 vL : ℚ} :
+    v3 * w3_n12_sample + v4 * w4_n12_sample + v5 * w5_n12_sample +
+        v6 * w6_n12_sample + vL * wL_n12_sample
+      ≤ (v3 + v4 + v5 + v6 + vL) / K_deg56_n12_sample
+      ↔ 64 * v3 + 32 * v4 + 16 * v5 + 8 * v6 + 4 * vL ≤
+          37 * (v3 + v4 + v5 + v6 + vL) := by
+  have hK : K_deg56_n12_sample = (512 / 37 : ℚ) := by
+    simp [K_deg56_n12_sample, deg56N12SampleCertificate_getQ_K_deg56_n12]
+  have hw3 : w3_n12_sample = (1 / 8 : ℚ) := by
+    simp [w3_n12_sample, deg56N12SampleCertificate_getQ_w3]
+  have hw4 : w4_n12_sample = (1 / 16 : ℚ) := by
+    simp [w4_n12_sample, deg56N12SampleCertificate_getQ_w4]
+  have hw5 : w5_n12_sample = (1 / 32 : ℚ) := by
+    simp [w5_n12_sample, deg56N12SampleCertificate_getQ_w5]
+  have hw6 : w6_n12_sample = (1 / 64 : ℚ) := by
+    simp [w6_n12_sample, deg56N12SampleCertificate_getQ_w6]
+  have hwL : wL_n12_sample = (1 / 128 : ℚ) := by
+    simp [wL_n12_sample, deg56N12SampleCertificate_getQ_wL]
+  constructor
+  · intro h
+    have h1 :
+        v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128
+          ≤ (v3 + v4 + v5 + v6 + vL) * (37 / 512 : ℚ) := by
+      simpa [hK, hw3, hw4, hw5, hw6, hwL, div_eq_mul_inv] using h
+    have h2 :
+        512 * (v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128)
+          ≤ 512 * ((v3 + v4 + v5 + v6 + vL) * (37 / 512 : ℚ)) :=
+      (mul_le_mul_of_nonneg_left h1 (by norm_num : (0 : ℚ) ≤ 512))
+    nlinarith [h2]
+  · intro h
+    have h1 :
+        512 * (v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128)
+          ≤ 512 * ((v3 + v4 + v5 + v6 + vL) * (37 / 512 : ℚ)) := by
+      nlinarith [h]
+    have h2 :
+        v3 / 8 + v4 / 16 + v5 / 32 + v6 / 64 + vL / 128
+          ≤ (v3 + v4 + v5 + v6 + vL) * (37 / 512 : ℚ) := by
+      nlinarith [h1]
+    simpa [hK, hw3, hw4, hw5, hw6, hwL, div_eq_mul_inv] using h2
+
 def K_deg56_shift_sample : ℚ :=
   (deg56ShiftSampleCertificate.getQ? "K_deg56_shift").getD 0
 
