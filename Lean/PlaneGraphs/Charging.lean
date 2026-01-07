@@ -326,6 +326,35 @@ lemma charge_bound_deg56_n12_iff {v3 v4 v5 v6 vL : ℚ} :
       nlinarith [h1]
     simpa [hK, hw3, hw4, hw5, hw6, hwL, div_eq_mul_inv] using h2
 
+lemma avgIso_le_deg56_n12_of_linear8 {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vlarge : ℚ}
+    (hn : (12 : ℚ) ≤ n)
+    (havg :
+      avgIso P ≤ v3 * w3_n12_sample + v4 * w4_n12_sample + v5 * w5_n12_sample +
+        v6 * w6_n12_sample + vlarge * wL_n12_sample)
+    (hsum : v3 + v4 + v5 + v6 + vlarge = (n : ℚ))
+    (hlin : 15 * v3 + 7 * v4 + 3 * v5 + v6 ≤ 8 * (n : ℚ) + 3) :
+    avgIso P ≤ (n : ℚ) / K_deg56_n12_sample := by
+  have hlin' :
+      60 * v3 + 28 * v4 + 12 * v5 + 4 * v6 ≤ 33 * (n : ℚ) := by
+    exact deg56_n12_linear_of_small (v3 := v3) (v4 := v4) (v5 := v5) (v6 := v6)
+      (n := (n : ℚ)) hn hlin
+  have hbal :
+      64 * v3 + 32 * v4 + 16 * v5 + 8 * v6 + 4 * vlarge ≤
+        37 * (v3 + v4 + v5 + v6 + vlarge) := by
+    nlinarith [hsum, hlin']
+  have hbound :
+      v3 * w3_n12_sample + v4 * w4_n12_sample + v5 * w5_n12_sample +
+        v6 * w6_n12_sample + vlarge * wL_n12_sample
+          ≤ (v3 + v4 + v5 + v6 + vlarge) / K_deg56_n12_sample := by
+    exact (charge_bound_deg56_n12_iff (v3 := v3) (v4 := v4) (v5 := v5)
+      (v6 := v6) (vL := vlarge)).2 hbal
+  have hbound' :
+      v3 * w3_n12_sample + v4 * w4_n12_sample + v5 * w5_n12_sample +
+        v6 * w6_n12_sample + vlarge * wL_n12_sample ≤ (n : ℚ) / K_deg56_n12_sample := by
+    simpa [hsum] using hbound
+  exact le_trans havg hbound'
+
 def K_deg56_shift_sample : ℚ :=
   (deg56ShiftSampleCertificate.getQ? "K_deg56_shift").getD 0
 

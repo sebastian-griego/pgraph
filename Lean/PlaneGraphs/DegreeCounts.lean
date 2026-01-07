@@ -698,6 +698,17 @@ lemma deg56_shift_balance_of_linear {v3 v4 v5 v6 vL n : ℚ}
     22 * v3 ≤ 2 * v4 + 14 * v5 + 20 * v6 + 23 * vL := by
   exact (deg56_shift_balance_iff_linear hsum).2 hlin
 
+lemma deg56_n12_linear_of_small {v3 v4 v5 v6 n : ℚ}
+    (hn : (12 : ℚ) ≤ n)
+    (hlin : 15 * v3 + 7 * v4 + 3 * v5 + v6 ≤ 8 * n + 3) :
+    60 * v3 + 28 * v4 + 12 * v5 + 4 * v6 ≤ 33 * n := by
+  have h1 :
+      60 * v3 + 28 * v4 + 12 * v5 + 4 * v6 ≤ 32 * n + 12 := by
+    nlinarith [hlin]
+  have h2 : 32 * n + 12 ≤ 33 * n := by
+    nlinarith [hn]
+  exact le_trans h1 h2
+
 lemma deg56_balance_of_sumLarge {n : ℕ} (G : Finset (Segment n))
     (hcard : (G.card : ℚ) = 3 * (n : ℚ) - 6)
     (hmin : ∀ v, 3 ≤ degree G v)

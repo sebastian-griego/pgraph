@@ -104,6 +104,15 @@ Helper tooling
   with `K_deg56_shift = 192/13`; it uses the same fixed weights.
 - `certificates/deg56_n12_sample.json` is the fixed-weight sample certificate
   for the expanded dataset with `n≥12`, giving `K_deg56_n12 = 512/37`.
+- A smaller-coefficient inequality that matches the `n≥12` sample data is:
+
+  15*v3 + 7*v4 + 3*v5 + v6 ≤ 8*n + 3
+
+  This holds for all vectors in `data/degree_vectors_new.json` with `n≥12`
+  (see `deg56FastVectorsN12_linear8_forall` in
+  `Lean/PlaneGraphs/DegreeVectors.lean`). In Lean, this inequality implies
+  the `K_deg56_n12` charge bound once `n≥12` (see
+  `avgIso_le_deg56_n12_of_linear8` in `Lean/PlaneGraphs/Charging.lean`).
 - `Lean/PlaneGraphs/DegreeVectors.lean` loads `data/degree_vectors.json` and
   proves (by computation) that both the unshifted and shifted certificate
   inequalities hold for every mined vector (shifted restricted to `n ≥ 9`).

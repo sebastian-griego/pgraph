@@ -57,6 +57,6 @@
    "././Lean/./PlaneGraphs/DegreeCounts.lean:645:31: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:840:14: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:851:14: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"}],
- "depHash": "16900396480748755583"}
+ "depHash": "9004390470539274857"}

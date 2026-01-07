@@ -236,6 +236,14 @@ instance (v : DegreeVector) : Decidable (deg56N12LinearOk v) := by
   dsimp [deg56N12LinearOk]
   exact Rat.instDecidableLe _ _
 
+def deg56N12Linear8Ok (v : DegreeVector) : Prop :=
+  15 * (v.v3 : ℚ) + 7 * (v.v4 : ℚ) + 3 * (v.v5 : ℚ) + (v.v6 : ℚ) ≤
+    8 * (v.n : ℚ) + 3
+
+instance (v : DegreeVector) : Decidable (deg56N12Linear8Ok v) := by
+  dsimp [deg56N12Linear8Ok]
+  exact Rat.instDecidableLe _ _
+
 lemma deg56N12Ok_iff_linear (v : DegreeVector) :
     deg56N12Ok v ↔ deg56N12LinearOk v := by
   simpa [deg56N12Ok, DegreeVector.charge, DegreeVector.n, deg56N12LinearOk] using
@@ -284,6 +292,10 @@ lemma deg56FastVectorsN12_ok :
 lemma deg56FastVectorsN12_ok_forall :
     ∀ v ∈ deg56FastVectorsN12, deg56N12Ok v := by
   exact AllOkDeg56N12.forall_mem deg56FastVectorsN12_ok
+
+lemma deg56FastVectorsN12_linear8_forall :
+    ∀ v ∈ deg56FastVectorsN12, deg56N12Linear8Ok v := by
+  native_decide
 
 lemma deg56FastVectorsN12_balance :
     AllBalanceDeg56 deg56FastVectorsN12 := by

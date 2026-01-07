@@ -2,4 +2,4 @@
  [{"message":
    ".> LEAN_PATH=././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/Cli/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib LD_LIBRARY_PATH=././.lake/build/lib /home/jovyan/.elan/toolchains/leanprover--lean4---v4.9.0/bin/lean ././Lean/./PlaneGraphs/DegreeVectors.lean -R ././Lean/. -o ././.lake/build/lib/PlaneGraphs/DegreeVectors.olean -i ././.lake/build/lib/PlaneGraphs/DegreeVectors.ilean -c ././.lake/build/ir/PlaneGraphs/DegreeVectors.c --json",
    "level": "trace"}],
- "depHash": "18437865428283966075"}
+ "depHash": "14101188539307957743"}
