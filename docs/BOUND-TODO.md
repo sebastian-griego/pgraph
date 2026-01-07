@@ -89,3 +89,6 @@ Helper tooling
 - `scripts/optimize_weights.py` uses SciPy to fit charging weights (and a linear
   bound `a*n+b`) against the sampled vectors. By default the weights are fixed
   at their visibility bounds; pass `--free-weights` to let them vary.
+- `scripts/solve_rational.py` runs a float LP and then computes the exact
+  rational K for the mined vectors, emitting the command to generate a JSON
+  certificate.

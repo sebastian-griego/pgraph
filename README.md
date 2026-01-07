@@ -20,6 +20,8 @@ Python tooling
   sets and collect degree vectors.
 - `scripts/optimize_weights.py`: use SciPy to fit a bound `a*n+b` against sampled
   degree vectors (weights fixed by default; use `--free-weights` to vary them).
+- `scripts/solve_rational.py`: solve the weight LP and snap-fit an exact rational
+  certificate for the mined degree vectors.
 
 Lean entry points
 -----------------
