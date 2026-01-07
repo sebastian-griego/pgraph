@@ -1,5 +1,7 @@
 import PlaneGraphs.ExpectationLemma
 
+open scoped BigOperators
+
 namespace PlaneGraphs
 
 lemma pg_min_class_lower_bound_at {n : ℕ} {K : ℚ} (hK : 0 < K)
@@ -57,6 +59,67 @@ lemma pg_min_class_shifted_aux {K : ℚ} (hK : 0 < K)
             (pg_min_class C hgood (N + k + 1) : ℚ) :=
         le_trans hmul hstep
       simpa [Nat.add_assoc, pow_succ, mul_assoc, mul_left_comm, mul_comm] using hchain
+
+lemma pg_min_class_shifted_prod_aux {K : ℕ → ℚ}
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hKpos : ∀ {n}, n ≥ N + 1 → 0 < K n)
+    (havg : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P → avgIso P ≤ (n : ℚ) / K n) :
+    ∀ k : ℕ,
+      (pg_min_class C hgood (N + k) : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) *
+          ∏ i in Finset.range k, K (N + i + 1) := by
+  classical
+  intro k
+  induction k with
+  | zero =>
+      simp
+  | succ k ih =>
+      have hN : N ≤ N + k + 1 := by
+        exact Nat.le_trans (Nat.le_add_right N k) (Nat.le_add_right (N + k) 1)
+      have hN1 : N + 1 ≤ N + k + 1 := by
+        simpa [Nat.add_assoc, Nat.add_left_comm, Nat.add_comm] using
+          (Nat.le_add_right (N + 1) k)
+      have hKpos' : 0 < K (N + k + 1) := hKpos (n := N + k + 1) hN1
+      have hstep :
+          (pg_min_class C hgood (N + k + 1) : ℚ) ≥
+            K (N + k + 1) * (pg_min_class C hgood (N + k) : ℚ) := by
+        refine pg_min_class_lower_bound_at (n := N + k) (K := K (N + k + 1)) (hK := hKpos')
+          (C := C) (hgood := hgood) (hdel := hdel) (havg := ?_)
+        intro P hP
+        have hbound := havg (n := N + k + 1) hN (P := P) hP
+        simpa [Nat.add_assoc, add_assoc, add_left_comm, add_comm] using hbound
+      have hKnonneg : 0 ≤ K (N + k + 1) := le_of_lt hKpos'
+      have hmul :
+          K (N + k + 1) *
+              ((pg_min_class C hgood N : ℚ) *
+                ∏ i in Finset.range k, K (N + i + 1)) ≤
+            K (N + k + 1) * (pg_min_class C hgood (N + k) : ℚ) := by
+        exact mul_le_mul_of_nonneg_left ih hKnonneg
+      have hchain :
+          K (N + k + 1) *
+              ((pg_min_class C hgood N : ℚ) *
+                ∏ i in Finset.range k, K (N + i + 1)) ≤
+            (pg_min_class C hgood (N + k + 1) : ℚ) :=
+        le_trans hmul hstep
+      simpa [Finset.prod_range_succ, mul_assoc, mul_left_comm, mul_comm] using hchain
+
+lemma pg_min_class_shifted_prod {K : ℕ → ℚ}
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ)
+    (hKpos : ∀ {n}, n ≥ N + 1 → 0 < K n)
+    (havg : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P → avgIso P ≤ (n : ℚ) / K n) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) *
+          ∏ i in Finset.range (n - N), K (N + i + 1) := by
+  intro n hn
+  have hsum : N + (n - N) = n := by
+    have h := Nat.sub_add_cancel hn
+    simpa [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc] using h
+  have haux := pg_min_class_shifted_prod_aux (K := K) (C := C) (hgood := hgood) (hdel := hdel)
+    (N := N) (hKpos := hKpos) (havg := havg) (k := n - N)
+  simpa [hsum] using haux
 
 lemma pg_min_class_shifted {K : ℚ} (hK : 0 < K)
     (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)

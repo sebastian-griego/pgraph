@@ -49,6 +49,40 @@ lemma avgIso_le_deg34_bound {n : ℕ} (P : PointSet n) (hn : 1 ≤ n)
     linarith [hnq]
   exact le_trans havg hineq
 
+def K_deg34_step (n : ℕ) : ℚ :=
+  (112 * (n : ℚ)) / (11 * (n : ℚ) - 6)
+
+lemma K_deg34_step_pos {n : ℕ} (hn : 1 ≤ n) : 0 < K_deg34_step n := by
+  have hnq : (1 : ℚ) ≤ (n : ℚ) := by
+    exact_mod_cast hn
+  have hnum : 0 < 112 * (n : ℚ) := by
+    linarith [hnq]
+  have hden : 0 < 11 * (n : ℚ) - 6 := by
+    linarith [hnq]
+  exact div_pos hnum hden
+
+lemma deg34_step_eq {n : ℕ} (hn : 1 ≤ n) :
+    (n : ℚ) / K_deg34_step n = (11 * (n : ℚ) - 6) / 112 := by
+  have hnq : (n : ℚ) ≠ 0 := by
+    have hnq' : (1 : ℚ) ≤ (n : ℚ) := by
+      exact_mod_cast hn
+    have hnpos : 0 < (n : ℚ) := by
+      linarith [hnq']
+    exact ne_of_gt hnpos
+  have hden : 11 * (n : ℚ) - 6 ≠ 0 := by
+    have hnq' : (1 : ℚ) ≤ (n : ℚ) := by
+      exact_mod_cast hn
+    have hpos : 0 < 11 * (n : ℚ) - 6 := by
+      linarith [hnq']
+    exact ne_of_gt hpos
+  field_simp [K_deg34_step, hnq, hden]
+  ring
+
+lemma avgIso_le_deg34_step {n : ℕ} (P : PointSet n) (hn : 1 ≤ n)
+    (havg : avgIso P ≤ (11 * (n : ℚ) - 6) / 112) :
+    avgIso P ≤ (n : ℚ) / K_deg34_step n := by
+  simpa [deg34_step_eq (n := n) hn] using havg
+
 lemma example_cert_deg34_bound {n : ℕ} (hn : 1 ≤ n) :
     (11 * (n : ℚ) - 6) / 112 ≤
       (n : ℚ) / ((exampleCertificate.getQ? "K_deg34").getD 0) := by
