@@ -16,6 +16,10 @@ Python tooling
 - `scripts/export_certificate.py`: export rational constants as JSON.
 - `scripts/optimize_charging.py`: exact LP solver for charging bounds (deg34 or a
   JSON-specified LP).
+- `scripts/mine_degree_vectors.py`: enumerate triangulations for small point
+  sets and collect degree vectors.
+- `scripts/optimize_weights.py`: use SciPy to fit charging weights to sampled
+  degree vectors.
 
 Lean entry points
 -----------------

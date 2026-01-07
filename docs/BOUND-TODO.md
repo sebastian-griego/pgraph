@@ -82,3 +82,9 @@ Helper tooling
   Example file:
 
   docs/lp/deg34.json
+
+- `scripts/mine_degree_vectors.py` enumerates triangulations for sampled point
+  sets and writes degree vectors to JSON. This is the data source for refining
+  degree constraints.
+- `scripts/optimize_weights.py` uses SciPy to fit charging weights (and a linear
+  bound `a*n+b`) against the sampled vectors.
