@@ -1,0 +1,11 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/Cli/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib LD_LIBRARY_PATH=././.lake/build/lib /home/jovyan/.elan/toolchains/leanprover--lean4---v4.9.0/bin/lean ././Lean/./PlaneGraphs/Hull3Balance.lean -R ././Lean/. -o ././.lake/build/lib/PlaneGraphs/Hull3Balance.olean -i ././.lake/build/lib/PlaneGraphs/Hull3Balance.ilean -c ././.lake/build/ir/PlaneGraphs/Hull3Balance.c --json",
+   "level": "trace"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:230:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:229:7: unused variable `h`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"}],
+ "depHash": "7143497495324988177"}

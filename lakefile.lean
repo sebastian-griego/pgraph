@@ -18,6 +18,7 @@ lean_lib PlaneGraphs where
     `PlaneGraphs.ExpectationLemma,
     `PlaneGraphs.Charging,
     `PlaneGraphs.Counterexample,
+    `PlaneGraphs.Hull3Balance,
     `PlaneGraphs.TrivialLowerBound,
     `Main
   ]

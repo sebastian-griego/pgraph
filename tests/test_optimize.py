@@ -21,8 +21,8 @@ def test_load_lp_json(tmp_path):
     payload = {
         "variables": ["v3", "v4"],
         "objective": ["1/8", "1/16"],
-        "equalities": [{"coeffs": ["1", "1"], "rhs": "n"}],
-        "inequalities": [{"coeffs": ["-1", "0"], "rhs": "0"}],
+        "equalities": [{"coeffs": ["1", "1"], "rhs": "n", "label": "partition"}],
+        "inequalities": [{"coeffs": ["-1", "0"], "rhs": "0", "label": "nonneg_v3"}],
     }
     path = tmp_path / "lp.json"
     path.write_text(json.dumps(payload), encoding="utf-8")
@@ -30,4 +30,6 @@ def test_load_lp_json(tmp_path):
     assert names == ("v3", "v4")
     assert objective == (Fraction(1, 8), Fraction(1, 16))
     assert eqs[0].rhs == Fraction(5, 1)
+    assert eqs[0].label == "partition"
     assert ineqs[0].coeffs == (Fraction(-1, 1), Fraction(0, 1))
+    assert ineqs[0].label == "nonneg_v3"

@@ -16,6 +16,7 @@ class Constraint:
     coeffs: tuple[Fraction, ...]
     rhs: Fraction
     relation: str  # "<=" or "=="
+    label: str | None = None
 
 
 def parse_linear_expr(expr: str) -> tuple[Fraction, Fraction]:
@@ -68,13 +69,15 @@ def load_lp_json(
     for item in data.get("equalities", []):
         coeffs = _parse_expr_list(item["coeffs"], n)
         rhs = eval_linear_expr(item["rhs"], n)
-        eqs.append(Constraint(coeffs=coeffs, rhs=rhs, relation="=="))
+        label = item.get("label")
+        eqs.append(Constraint(coeffs=coeffs, rhs=rhs, relation="==", label=label))
 
     ineqs = []
     for item in data.get("inequalities", []):
         coeffs = _parse_expr_list(item["coeffs"], n)
         rhs = eval_linear_expr(item["rhs"], n)
-        ineqs.append(Constraint(coeffs=coeffs, rhs=rhs, relation="<="))
+        label = item.get("label")
+        ineqs.append(Constraint(coeffs=coeffs, rhs=rhs, relation="<=", label=label))
 
     return variables, objective, eqs, ineqs
 
@@ -227,17 +230,38 @@ def deg34_program(n: int, include_deg3_bound: bool) -> tuple[
     objective = (Fraction(1, 8), Fraction(1, 16), Fraction(1, 32))
 
     eqs = [
-        Constraint(coeffs=(Fraction(1), Fraction(1), Fraction(1)), rhs=nfrac, relation="==")
+        Constraint(
+            coeffs=(Fraction(1), Fraction(1), Fraction(1)),
+            rhs=nfrac,
+            relation="==",
+            label="partition",
+        )
     ]
 
     ineqs = [
-        Constraint(coeffs=(Fraction(-1), Fraction(0), Fraction(0)), rhs=Fraction(0), relation="<="),
-        Constraint(coeffs=(Fraction(0), Fraction(-1), Fraction(0)), rhs=Fraction(0), relation="<="),
-        Constraint(coeffs=(Fraction(0), Fraction(0), Fraction(-1)), rhs=Fraction(0), relation="<="),
+        Constraint(
+            coeffs=(Fraction(-1), Fraction(0), Fraction(0)),
+            rhs=Fraction(0),
+            relation="<=",
+            label="nonneg_v3",
+        ),
+        Constraint(
+            coeffs=(Fraction(0), Fraction(-1), Fraction(0)),
+            rhs=Fraction(0),
+            relation="<=",
+            label="nonneg_v4",
+        ),
+        Constraint(
+            coeffs=(Fraction(0), Fraction(0), Fraction(-1)),
+            rhs=Fraction(0),
+            relation="<=",
+            label="nonneg_vlarge",
+        ),
         Constraint(
             coeffs=(Fraction(9), Fraction(2), Fraction(0)),
             rhs=Fraction(6 * n - 6, 1),
             relation="<=",
+            label="deg34_bound",
         ),
     ]
 
@@ -247,6 +271,7 @@ def deg34_program(n: int, include_deg3_bound: bool) -> tuple[
                 coeffs=(Fraction(3), Fraction(0), Fraction(0)),
                 rhs=Fraction(2 * n - 3, 1),
                 relation="<=",
+                label="deg3_bound",
             )
         )
 

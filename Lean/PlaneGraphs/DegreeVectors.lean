@@ -244,6 +244,69 @@ instance (v : DegreeVector) : Decidable (deg56N12Linear8Ok v) := by
   dsimp [deg56N12Linear8Ok]
   exact Rat.instDecidableLe _ _
 
+def deg56N12SumLargeOk (v : DegreeVector) : Prop :=
+  4 * v.sumLarge ≥
+    33 * (v.v3 : ℚ) + 5 * (v.v4 : ℚ) - 11 * (v.v5 : ℚ) - 21 * (v.v6 : ℚ) - 57
+
+instance (v : DegreeVector) : Decidable (deg56N12SumLargeOk v) := by
+  dsimp [deg56N12SumLargeOk]
+  exact Rat.instDecidableLe _ _
+
+noncomputable def degreeVectorOf {n : ℕ} (G : Finset (Segment n)) : DegreeVector :=
+  { v3 := v3 G, v4 := v4 G, v5 := v5 G, v6 := v6 G, vL := vL G }
+
+lemma degreeVectorOf_sumLarge {n : ℕ} (G : Finset (Segment n))
+    (hcard : (G.card : ℚ) = 3 * (n : ℚ) - 6)
+    (hmin : ∀ v, 3 ≤ degree G v)
+    (hsum : (v3 G + v4 G + v5 G + v6 G + vL G : ℚ) = (n : ℚ)) :
+    (degreeVectorOf G).sumLarge = (sumLarge G : ℚ) := by
+  have hsumLarge :=
+    sumLarge_eq_q (G := G) hcard hmin hsum
+  have hvec :
+      (degreeVectorOf G).sumLarge =
+        3 * (v3 G : ℚ) + 2 * (v4 G : ℚ) + (v5 G : ℚ) + 6 * (vL G : ℚ) - 12 := by
+    rfl
+  calc
+    (degreeVectorOf G).sumLarge =
+        3 * (v3 G : ℚ) + 2 * (v4 G : ℚ) + (v5 G : ℚ) + 6 * (vL G : ℚ) - 12 := hvec
+    _ = (sumLarge G : ℚ) := by
+          symm
+          exact hsumLarge
+
+lemma deg56N12Linear8_iff_sumLarge (v : DegreeVector) :
+    deg56N12Linear8Ok v ↔ deg56N12SumLargeOk v := by
+  have hsum :
+      (v.v3 : ℚ) + (v.v4 : ℚ) + (v.v5 : ℚ) + (v.v6 : ℚ) + (v.vL : ℚ) =
+        (v.n : ℚ) := by
+    simp [DegreeVector.n]
+  have hsumLarge :
+      v.sumLarge = 3 * (v.v3 : ℚ) + 2 * (v.v4 : ℚ) + (v.v5 : ℚ) +
+        6 * (v.vL : ℚ) - 12 := by
+    rfl
+  simpa [deg56N12Linear8Ok, deg56N12SumLargeOk, DegreeVector.n, DegreeVector.sumLarge] using
+    (deg56_linear8_iff_sumLarge (v3 := (v.v3 : ℚ)) (v4 := (v.v4 : ℚ))
+      (v5 := (v.v5 : ℚ)) (v6 := (v.v6 : ℚ)) (vL := (v.vL : ℚ))
+      (n := (v.n : ℚ)) (sumLarge := v.sumLarge) hsum hsumLarge)
+
+def deg56N12BalanceSimpleOk (v : DegreeVector) : Prop :=
+  7 * (v.v3 : ℚ) ≤
+    (v.v4 : ℚ) + 5 * (v.v5 : ℚ) + 7 * (v.v6 : ℚ) + 8 * (v.vL : ℚ) + 3
+
+instance (v : DegreeVector) : Decidable (deg56N12BalanceSimpleOk v) := by
+  dsimp [deg56N12BalanceSimpleOk]
+  exact Rat.instDecidableLe _ _
+
+lemma deg56N12Linear8_iff_balance_simple (v : DegreeVector) :
+    deg56N12Linear8Ok v ↔ deg56N12BalanceSimpleOk v := by
+  have hsum :
+      (v.v3 : ℚ) + (v.v4 : ℚ) + (v.v5 : ℚ) + (v.v6 : ℚ) + (v.vL : ℚ) =
+        (v.n : ℚ) := by
+    simp [DegreeVector.n]
+  simpa [deg56N12Linear8Ok, deg56N12BalanceSimpleOk, DegreeVector.n] using
+    (deg56_linear8_iff_balance_simple (v3 := (v.v3 : ℚ)) (v4 := (v.v4 : ℚ))
+      (v5 := (v.v5 : ℚ)) (v6 := (v.v6 : ℚ)) (vL := (v.vL : ℚ))
+      (n := (v.n : ℚ)) hsum)
+
 lemma deg56N12Ok_iff_linear (v : DegreeVector) :
     deg56N12Ok v ↔ deg56N12LinearOk v := by
   simpa [deg56N12Ok, DegreeVector.charge, DegreeVector.n, deg56N12LinearOk] using
@@ -296,6 +359,18 @@ lemma deg56FastVectorsN12_ok_forall :
 lemma deg56FastVectorsN12_linear8_forall :
     ∀ v ∈ deg56FastVectorsN12, deg56N12Linear8Ok v := by
   native_decide
+
+lemma deg56FastVectorsN12_sumLarge_forall :
+    ∀ v ∈ deg56FastVectorsN12, deg56N12SumLargeOk v := by
+  intro v hv
+  have hlin := deg56FastVectorsN12_linear8_forall v hv
+  exact (deg56N12Linear8_iff_sumLarge v).1 hlin
+
+lemma deg56FastVectorsN12_balance_simple_forall :
+    ∀ v ∈ deg56FastVectorsN12, deg56N12BalanceSimpleOk v := by
+  intro v hv
+  have hlin := deg56FastVectorsN12_linear8_forall v hv
+  exact (deg56N12Linear8_iff_balance_simple v).1 hlin
 
 lemma deg56FastVectorsN12_balance :
     AllBalanceDeg56 deg56FastVectorsN12 := by

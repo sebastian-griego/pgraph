@@ -2,12 +2,12 @@
   "variables": ["v3", "v4", "vlarge"],
   "objective": ["1/8", "1/16", "1/32"],
   "equalities": [
-    {"coeffs": ["1", "1", "1"], "rhs": "n"}
+    {"coeffs": ["1", "1", "1"], "rhs": "n", "label": "partition"}
   ],
   "inequalities": [
-    {"coeffs": ["-1", "0", "0"], "rhs": "0"},
-    {"coeffs": ["0", "-1", "0"], "rhs": "0"},
-    {"coeffs": ["0", "0", "-1"], "rhs": "0"},
-    {"coeffs": ["9", "1/2", "0"], "rhs": "6*n-6"}
+    {"coeffs": ["-1", "0", "0"], "rhs": "0", "label": "nonneg_v3"},
+    {"coeffs": ["0", "-1", "0"], "rhs": "0", "label": "nonneg_v4"},
+    {"coeffs": ["0", "0", "-1"], "rhs": "0", "label": "nonneg_vlarge"},
+    {"coeffs": ["9", "1/2", "0"], "rhs": "6*n-6", "label": "deg34_bound"}
   ]
 }

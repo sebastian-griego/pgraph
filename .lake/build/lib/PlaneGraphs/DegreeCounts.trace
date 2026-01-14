@@ -3,60 +3,123 @@
    ".> LEAN_PATH=././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/Cli/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib LD_LIBRARY_PATH=././.lake/build/lib /home/jovyan/.elan/toolchains/leanprover--lean4---v4.9.0/bin/lean ././Lean/./PlaneGraphs/DegreeCounts.lean -R ././Lean/. -o ././.lake/build/lib/PlaneGraphs/DegreeCounts.olean -i ././.lake/build/lib/PlaneGraphs/DegreeCounts.ilean -c ././.lake/build/ir/PlaneGraphs/DegreeCounts.c --json",
    "level": "trace"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:57:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:388:14: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:80:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:708:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:123:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:716:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:130:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:728:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:158:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:785:8: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:231:22: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:792:8: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:256:18: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:797:14: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:273:18: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:836:6: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:287:12: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:859:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:325:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:869:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:378:12: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:969:10: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:457:12: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:993:10: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:537:12: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1277:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:567:10: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1320:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:578:36: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1327:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:613:18: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1355:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:630:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1428:22: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:645:31: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1453:18: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/DegreeCounts.lean:851:14: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1470:18: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1562:12: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1600:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1653:12: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1732:12: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1812:12: unused variable `hv`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1842:10: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1853:36: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1888:18: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1905:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1920:31: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1934:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1940:50: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1944:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1950:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1978:16: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:1982:12: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:2005:4: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:2010:48: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:2171:10: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:2173:10: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/DegreeCounts.lean:2552:14: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"}],
- "depHash": "9004390470539274857"}
+ "depHash": "13854048168727216282"}

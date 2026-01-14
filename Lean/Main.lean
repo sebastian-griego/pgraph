@@ -1,6 +1,7 @@
 import PlaneGraphs.Asymptotic
 import PlaneGraphs.Charging
 import PlaneGraphs.Counterexample
+import PlaneGraphs.Hull3Balance
 
 open scoped BigOperators
 
@@ -10,6 +11,7 @@ def H : Nat := 3
 def K_deg34_cert : ℚ := (exampleCertificate.getQ? "K_deg34").getD 0
 def K_deg56_sample_main : ℚ := K_deg56_sample
 def K_deg56_shift_sample_main : ℚ := K_deg56_shift_sample
+def K_deg56_n12_sample_main : ℚ := K_deg56_n12_sample
 
 lemma K_deg34_cert_pos : 0 < K_deg34_cert := by
   simp [K_deg34_cert, exampleCertificate_getQ_deg34]
@@ -19,6 +21,9 @@ lemma K_deg56_sample_main_pos : 0 < K_deg56_sample_main := by
 
 lemma K_deg56_shift_sample_main_pos : 0 < K_deg56_shift_sample_main := by
   simpa [K_deg56_shift_sample_main] using K_deg56_shift_sample_pos
+
+lemma K_deg56_n12_sample_main_pos : 0 < K_deg56_n12_sample_main := by
+  simpa [K_deg56_n12_sample_main] using K_deg56_n12_sample_pos
 
 theorem counterexample_12_15_with_hull (_h : HullSize trianglePoints ≤ H) :
     (pg trianglePoints : ℚ) < (243 / 20 : ℚ) ^ (3 : ℕ) := by
@@ -209,6 +214,54 @@ theorem main_lower_bound_deg56_shift_sample_prefactor
   exact pg_min_class_prefactor (K := K_deg56_shift_sample_main)
     (hK := K_deg56_shift_sample_main_pos) (C := C) (hgood := hgood) (hdel := hdel)
     (N := N) (havg := hav) (n := n) hn
+
+theorem main_lower_bound_deg56_n12_balance_simple
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ) (hN : 12 ≤ N)
+    (hdata : ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+      ∃ v3 v4 v5 v6 vL : ℚ,
+        avgIso P ≤ v3 * w3_n12_sample + v4 * w4_n12_sample + v5 * w5_n12_sample +
+          v6 * w6_n12_sample + vL * wL_n12_sample ∧
+        v3 + v4 + v5 + v6 + vL = (n : ℚ) ∧
+        7 * v3 ≤ v4 + 5 * v5 + 7 * v6 + 8 * vL + 3) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_n12_sample_main ^ (n - N) := by
+  intro n hn
+  have havg :
+      ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+        avgIso P ≤ (n : ℚ) / K_deg56_n12_sample_main := by
+    intro n hn' P hP
+    rcases hdata hn' P hP with ⟨v3, v4, v5, v6, vL, havg, hsum, hbal⟩
+    have hnq : (12 : ℚ) ≤ (n : ℚ) := by
+      exact_mod_cast (le_trans hN hn')
+    have hbound :=
+      avgIso_le_deg56_n12_of_balance_simple (P := P) (v3 := v3) (v4 := v4)
+        (v5 := v5) (v6 := v6) (vL := vL) hnq havg hsum hbal
+    simpa [K_deg56_n12_sample_main] using hbound
+  exact pg_min_class_shifted (K := K_deg56_n12_sample_main)
+    (hK := K_deg56_n12_sample_main_pos) (C := C) (hgood := hgood)
+    (hdel := hdel) (N := N) (havg := havg) (n := n) hn
+
+theorem main_lower_bound_deg56_n12_hull3_class
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ) (hN : 12 ≤ N)
+    (hHull : ∀ {n} {P : PointSet n}, C n P → HullSize P = 3) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_n12_sample_main ^ (n - N) := by
+  intro n hn
+  have havg :
+      ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+        avgIso P ≤ (n : ℚ) / K_deg56_n12_sample_main := by
+    intro n hn' P hP
+    have hn12 : 12 ≤ n := le_trans hN hn'
+    let T := hull3_triangulation_exists P (hHull hP)
+    have hbound := avgIso_le_deg56_n12_hull3_charge (T := T) hn12
+    simpa [K_deg56_n12_sample_main] using hbound
+  exact pg_min_class_shifted (K := K_deg56_n12_sample_main)
+    (hK := K_deg56_n12_sample_main_pos) (C := C) (hgood := hgood)
+    (hdel := hdel) (N := N) (havg := havg) (n := n) hn
 
 theorem main_lower_bound_deg56_shift_balance
     (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)

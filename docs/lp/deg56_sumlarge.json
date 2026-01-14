@@ -1,0 +1,21 @@
+{
+  "variables": ["v3", "v4", "v5", "v6", "vlarge", "sumLarge"],
+  "objective": ["1/8", "1/16", "1/32", "1/64", "1/128", "0"],
+  "equalities": [
+    {"coeffs": ["1", "1", "1", "1", "1", "0"], "rhs": "n", "label": "partition"}
+  ],
+  "inequalities": [
+    {"coeffs": ["-1", "0", "0", "0", "0", "0"], "rhs": "0", "label": "nonneg_v3"},
+    {"coeffs": ["0", "-1", "0", "0", "0", "0"], "rhs": "0", "label": "nonneg_v4"},
+    {"coeffs": ["0", "0", "-1", "0", "0", "0"], "rhs": "0", "label": "nonneg_v5"},
+    {"coeffs": ["0", "0", "0", "-1", "0", "0"], "rhs": "0", "label": "nonneg_v6"},
+    {"coeffs": ["0", "0", "0", "0", "-1", "0"], "rhs": "0", "label": "nonneg_vlarge"},
+    {"coeffs": ["0", "0", "0", "0", "0", "-1"], "rhs": "0", "label": "nonneg_sumLarge"},
+    {"coeffs": ["0", "0", "0", "0", "7", "-1"], "rhs": "0", "label": "sumLarge_ge_7vL"},
+    {"coeffs": ["3", "4", "5", "6", "0", "1"], "rhs": "6*n-12", "label": "degree_sum_split"},
+    {"coeffs": ["-3", "-2", "-1", "0", "0", "0"], "rhs": "-12", "label": "euler_lower"},
+    {"coeffs": ["1", "0", "0", "0", "0", "0"], "rhs": "2/3*n-1", "label": "v3_cap"},
+    {"coeffs": ["9", "1/2", "0", "0", "0", "0"], "rhs": "6*n-6", "label": "deg34_bound"},
+    {"coeffs": ["23", "-2", "-15", "-22", "-19", "-1"], "rhs": "12", "label": "sumLarge_lower_unshifted"}
+  ]
+}

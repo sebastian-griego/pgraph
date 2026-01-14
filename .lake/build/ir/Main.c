@@ -1,6 +1,6 @@
 // Lean compiler output
 // Module: Main
-// Imports: Init PlaneGraphs.Asymptotic PlaneGraphs.Charging PlaneGraphs.Counterexample
+// Imports: Init PlaneGraphs.Asymptotic PlaneGraphs.Charging PlaneGraphs.Counterexample PlaneGraphs.Hull3Balance
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -19,10 +19,12 @@ lean_object* l_Nat_cast___at_Rat_instOfNat___spec__1(lean_object*);
 extern lean_object* l_PlaneGraphs_K__deg56__sample;
 LEAN_EXPORT lean_object* l_PlaneGraphs_K__deg34__cert;
 extern lean_object* l_PlaneGraphs_K__deg56__shift__sample;
+extern lean_object* l_PlaneGraphs_K__deg56__n12__sample;
 extern lean_object* l_PlaneGraphs_exampleCertificate;
 static lean_object* l_PlaneGraphs_K__deg34__cert___closed__2;
 LEAN_EXPORT lean_object* l_PlaneGraphs_H;
 static lean_object* l_PlaneGraphs_K__deg34__cert___closed__4;
+LEAN_EXPORT lean_object* l_PlaneGraphs_K__deg56__n12__sample__main;
 lean_object* l_PlaneGraphs_Certificate_getQ_x3f(lean_object*, lean_object*);
 static lean_object* l_PlaneGraphs_K__deg34__cert___closed__1;
 static lean_object* l_PlaneGraphs_K__deg34__cert___closed__3;
@@ -105,10 +107,19 @@ x_1 = l_PlaneGraphs_K__deg56__shift__sample;
 return x_1;
 }
 }
+static lean_object* _init_l_PlaneGraphs_K__deg56__n12__sample__main() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_K__deg56__n12__sample;
+return x_1;
+}
+}
 lean_object* initialize_Init(uint8_t builtin, lean_object*);
 lean_object* initialize_PlaneGraphs_Asymptotic(uint8_t builtin, lean_object*);
 lean_object* initialize_PlaneGraphs_Charging(uint8_t builtin, lean_object*);
 lean_object* initialize_PlaneGraphs_Counterexample(uint8_t builtin, lean_object*);
+lean_object* initialize_PlaneGraphs_Hull3Balance(uint8_t builtin, lean_object*);
 static bool _G_initialized = false;
 LEAN_EXPORT lean_object* initialize_Main(uint8_t builtin, lean_object* w) {
 lean_object * res;
@@ -124,6 +135,9 @@ res = initialize_PlaneGraphs_Charging(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_PlaneGraphs_Counterexample(builtin, lean_io_mk_world());
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_PlaneGraphs_Hull3Balance(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 l_PlaneGraphs_H = _init_l_PlaneGraphs_H();
@@ -142,6 +156,8 @@ l_PlaneGraphs_K__deg56__sample__main = _init_l_PlaneGraphs_K__deg56__sample__mai
 lean_mark_persistent(l_PlaneGraphs_K__deg56__sample__main);
 l_PlaneGraphs_K__deg56__shift__sample__main = _init_l_PlaneGraphs_K__deg56__shift__sample__main();
 lean_mark_persistent(l_PlaneGraphs_K__deg56__shift__sample__main);
+l_PlaneGraphs_K__deg56__n12__sample__main = _init_l_PlaneGraphs_K__deg56__n12__sample__main();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__n12__sample__main);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus

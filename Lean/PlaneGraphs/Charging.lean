@@ -37,6 +37,33 @@ lemma avgIso_le_of_charge {n : ℕ} (P : PointSet n) (charge : Charge) {K : ℚ}
     simp [avgIso, hconserve]
   simpa [havg] using hdiv
 
+lemma avgIso_le_of_charge_bound {n : ℕ} (P : PointSet n) (charge : Charge) {B : ℚ}
+    (hconserve : ∑ G in planeGraphs P, charge G =
+        ∑ G in planeGraphs P, (isoCount G : ℚ))
+    (hupper : ∀ G ∈ planeGraphs P, charge G ≤ B) :
+    avgIso P ≤ B := by
+  classical
+  have hsum_le :
+      ∑ G in planeGraphs P, charge G ≤
+        ∑ _G in planeGraphs P, B := by
+    refine Finset.sum_le_sum ?_
+    intro G hG
+    exact hupper G hG
+  have hsum_const :
+      ∑ _G in planeGraphs P, B = (pg P : ℚ) * B := by
+    simp [pg]
+  have hsum_le' :
+      ∑ G in planeGraphs P, charge G ≤ (pg P : ℚ) * B := by
+    simpa [hsum_const] using hsum_le
+  have hpg_pos : (0 : ℚ) < (pg P : ℚ) := by
+    exact_mod_cast (pg_pos P)
+  have hdiv :
+      (∑ G in planeGraphs P, charge G) / (pg P : ℚ) ≤ B := by
+    exact (div_le_iff' hpg_pos).2 hsum_le'
+  have havg : avgIso P = (∑ G in planeGraphs P, charge G) / (pg P : ℚ) := by
+    simp [avgIso, hconserve]
+  simpa [havg] using hdiv
+
 end PlaneGraphs
 
 namespace PlaneGraphs
@@ -354,6 +381,41 @@ lemma avgIso_le_deg56_n12_of_linear8 {n : ℕ} (P : PointSet n)
         v6 * w6_n12_sample + vlarge * wL_n12_sample ≤ (n : ℚ) / K_deg56_n12_sample := by
     simpa [hsum] using hbound
   exact le_trans havg hbound'
+
+lemma avgIso_le_deg56_n12_of_balance_simple {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vL : ℚ}
+    (hn : (12 : ℚ) ≤ n)
+    (havg :
+      avgIso P ≤ v3 * w3_n12_sample + v4 * w4_n12_sample + v5 * w5_n12_sample +
+        v6 * w6_n12_sample + vL * wL_n12_sample)
+    (hsum : v3 + v4 + v5 + v6 + vL = (n : ℚ))
+    (hbal : 7 * v3 ≤ v4 + 5 * v5 + 7 * v6 + 8 * vL + 3) :
+    avgIso P ≤ (n : ℚ) / K_deg56_n12_sample := by
+  have hlin :
+      15 * v3 + 7 * v4 + 3 * v5 + v6 ≤ 8 * (n : ℚ) + 3 := by
+    exact (deg56_linear8_iff_balance_simple (v3 := v3) (v4 := v4) (v5 := v5)
+      (v6 := v6) (vL := vL) (n := (n : ℚ)) hsum).2 hbal
+  exact avgIso_le_deg56_n12_of_linear8 (P := P) (v3 := v3) (v4 := v4) (v5 := v5)
+    (v6 := v6) (vlarge := vL) hn havg hsum hlin
+
+lemma avgIso_le_deg56_n12_of_sumLarge {n : ℕ} (P : PointSet n)
+    {v3 v4 v5 v6 vL sumLarge : ℚ}
+    (hn : (12 : ℚ) ≤ n)
+    (havg :
+      avgIso P ≤ v3 * w3_n12_sample + v4 * w4_n12_sample + v5 * w5_n12_sample +
+        v6 * w6_n12_sample + vL * wL_n12_sample)
+    (hsum : v3 + v4 + v5 + v6 + vL = (n : ℚ))
+    (hsumLarge : sumLarge = 3 * v3 + 2 * v4 + v5 + 6 * vL - 12)
+    (hlarge :
+      4 * sumLarge ≥ 33 * v3 + 5 * v4 - 11 * v5 - 21 * v6 - 57) :
+    avgIso P ≤ (n : ℚ) / K_deg56_n12_sample := by
+  have hlin :
+      15 * v3 + 7 * v4 + 3 * v5 + v6 ≤ 8 * (n : ℚ) + 3 := by
+    exact (deg56_linear8_iff_sumLarge (v3 := v3) (v4 := v4) (v5 := v5)
+      (v6 := v6) (vL := vL) (n := (n : ℚ)) (sumLarge := sumLarge) hsum hsumLarge).2
+      hlarge
+  exact avgIso_le_deg56_n12_of_linear8 (P := P) (v3 := v3) (v4 := v4) (v5 := v5)
+    (v6 := v6) (vlarge := vL) hn havg hsum hlin
 
 def K_deg56_shift_sample : ℚ :=
   (deg56ShiftSampleCertificate.getQ? "K_deg56_shift").getD 0

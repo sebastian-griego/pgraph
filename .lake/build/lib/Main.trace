@@ -3,6 +3,6 @@
    ".> LEAN_PATH=././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/Cli/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib LD_LIBRARY_PATH=././.lake/build/lib /home/jovyan/.elan/toolchains/leanprover--lean4---v4.9.0/bin/lean ././Lean/./Main.lean -R ././Lean/. -o ././.lake/build/lib/Main.olean -i ././.lake/build/lib/Main.ilean -c ././.lake/build/ir/Main.c --json",
    "level": "trace"},
   {"message":
-   "././Lean/./Main.lean:159:0: 'PlaneGraphs.main_lower_bound_deg34' depends on axioms: [propext, Quot.sound, Classical.choice]",
+   "././Lean/./Main.lean:164:0: 'PlaneGraphs.main_lower_bound_deg34' depends on axioms: [propext, Quot.sound, Classical.choice]",
    "level": "info"}],
- "depHash": "17612239919885201182"}
+ "depHash": "9779370726709083545"}

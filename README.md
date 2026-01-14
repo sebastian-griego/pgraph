@@ -27,6 +27,10 @@ Python tooling
   explore shifted bounds).
 - `scripts/search_degree_inequalities.py`: search for simple linear inequalities
   satisfied by mined degree vectors, to suggest candidate geometric constraints.
+- `scripts/check_linear_bound.py`: validate linear degree inequalities against
+  mined vectors (supports sampling and JSON summaries).
+- `scripts/check_sumlarge_bound.py`: validate sumLarge lower bounds against
+  mined vectors (supports sampling and JSON summaries).
 
 Lean entry points
 -----------------
@@ -37,6 +41,9 @@ Asymptotic lower bounds are in `Lean/Main.lean`:
   `(11*n - 6)/112` inequality.
 - `main_lower_bound_deg34_cert`: same as above but routes through the JSON
   certificate (`certificates/example.json`).
+- `main_lower_bound_deg56_n12_hull3_class`: hull‑3 conditional bound using
+  `K_deg56_n12 = 512/37` (requires the hull‑3 charging axioms in
+  `Lean/PlaneGraphs/Hull3Balance.lean`).
 
 Counterexamples
 ---------------

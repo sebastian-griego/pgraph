@@ -1,0 +1,74 @@
+{
+  "coeffs": [
+    [
+      25,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      -13,
+      1
+    ],
+    [
+      -20,
+      1
+    ],
+    [
+      -17,
+      1
+    ]
+  ],
+  "const": [
+    -12,
+    1
+  ],
+  "data": "data/degree_vectors_new.json",
+  "examples": [
+    {
+      "margin": [
+        -12,
+        1
+      ],
+      "n": 6,
+      "rhs": [
+        12,
+        1
+      ],
+      "sumLarge": 0,
+      "vec": [
+        2,
+        2,
+        2,
+        0,
+        0
+      ]
+    }
+  ],
+  "hull": 3,
+  "max_n": null,
+  "min_n": null,
+  "total_bad": 29,
+  "total_checked": 2844,
+  "worst": {
+    "margin": [
+      -23,
+      1
+    ],
+    "n": 11,
+    "rhs": [
+      47,
+      1
+    ],
+    "sumLarge": 24,
+    "vec": [
+      6,
+      0,
+      0,
+      2,
+      3
+    ]
+  }
+}
