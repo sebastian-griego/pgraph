@@ -21,6 +21,7 @@ LEAN_EXPORT lean_object* l_PlaneGraphs_K__deg34__cert;
 extern lean_object* l_PlaneGraphs_K__deg56__shift__sample;
 extern lean_object* l_PlaneGraphs_K__deg56__n12__sample;
 extern lean_object* l_PlaneGraphs_exampleCertificate;
+LEAN_EXPORT lean_object* l_PlaneGraphs_K__deg56__n15__sample__main;
 static lean_object* l_PlaneGraphs_K__deg34__cert___closed__2;
 LEAN_EXPORT lean_object* l_PlaneGraphs_H;
 static lean_object* l_PlaneGraphs_K__deg34__cert___closed__4;
@@ -28,6 +29,7 @@ LEAN_EXPORT lean_object* l_PlaneGraphs_K__deg56__n12__sample__main;
 lean_object* l_PlaneGraphs_Certificate_getQ_x3f(lean_object*, lean_object*);
 static lean_object* l_PlaneGraphs_K__deg34__cert___closed__1;
 static lean_object* l_PlaneGraphs_K__deg34__cert___closed__3;
+extern lean_object* l_PlaneGraphs_K__deg56__n15__sample;
 static lean_object* _init_l_PlaneGraphs_H() {
 _start:
 {
@@ -115,6 +117,14 @@ x_1 = l_PlaneGraphs_K__deg56__n12__sample;
 return x_1;
 }
 }
+static lean_object* _init_l_PlaneGraphs_K__deg56__n15__sample__main() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_K__deg56__n15__sample;
+return x_1;
+}
+}
 lean_object* initialize_Init(uint8_t builtin, lean_object*);
 lean_object* initialize_PlaneGraphs_Asymptotic(uint8_t builtin, lean_object*);
 lean_object* initialize_PlaneGraphs_Charging(uint8_t builtin, lean_object*);
@@ -158,6 +168,8 @@ l_PlaneGraphs_K__deg56__shift__sample__main = _init_l_PlaneGraphs_K__deg56__shif
 lean_mark_persistent(l_PlaneGraphs_K__deg56__shift__sample__main);
 l_PlaneGraphs_K__deg56__n12__sample__main = _init_l_PlaneGraphs_K__deg56__n12__sample__main();
 lean_mark_persistent(l_PlaneGraphs_K__deg56__n12__sample__main);
+l_PlaneGraphs_K__deg56__n15__sample__main = _init_l_PlaneGraphs_K__deg56__n15__sample__main();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__n15__sample__main);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus

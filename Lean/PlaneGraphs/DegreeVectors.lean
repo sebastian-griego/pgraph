@@ -220,6 +220,9 @@ lemma deg56FastVectors_not_linear :
 def deg56FastVectorsN12 : List DegreeVector :=
   deg56FastVectors.filter (fun v => 12 ≤ v.n)
 
+def deg56FastVectorsN15 : List DegreeVector :=
+  deg56FastVectors.filter (fun v => 15 ≤ v.n)
+
 def deg56N12Ok (v : DegreeVector) : Prop :=
   v.charge w3_n12_sample w4_n12_sample w5_n12_sample w6_n12_sample wL_n12_sample ≤
     (v.n : ℚ) / K_deg56_n12_sample
@@ -250,6 +253,16 @@ def deg56N12SumLargeOk (v : DegreeVector) : Prop :=
 
 instance (v : DegreeVector) : Decidable (deg56N12SumLargeOk v) := by
   dsimp [deg56N12SumLargeOk]
+  exact Rat.instDecidableLe _ _
+
+def K_deg56_n15_sample : ℚ := (2304 / 157 : ℚ)
+
+def deg56N15Ok (v : DegreeVector) : Prop :=
+  v.charge w3_n12_sample w4_n12_sample w5_n12_sample w6_n12_sample wL_n12_sample ≤
+    (v.n : ℚ) / K_deg56_n15_sample
+
+instance (v : DegreeVector) : Decidable (deg56N15Ok v) := by
+  dsimp [deg56N15Ok]
   exact Rat.instDecidableLe _ _
 
 noncomputable def degreeVectorOf {n : ℕ} (G : Finset (Segment n)) : DegreeVector :=
@@ -386,6 +399,45 @@ lemma deg56FastVectorsN12_linear_forall :
   have hbal := deg56FastVectorsN12_balance_forall v hv
   exact (deg56Balance_iff_linear v).1 hbal
 
+def AllOkDeg56N15 : List DegreeVector → Prop
+  | [] => True
+  | v :: vs => deg56N15Ok v ∧ AllOkDeg56N15 vs
+
+instance : Decidable (AllOkDeg56N15 vs) := by
+  induction vs with
+  | nil =>
+      exact isTrue trivial
+  | cons v vs ih =>
+      letI : Decidable (deg56N15Ok v) := inferInstance
+      letI : Decidable (AllOkDeg56N15 vs) := ih
+      exact instDecidableAnd
+
+lemma AllOkDeg56N15.forall_mem :
+    ∀ {vs}, AllOkDeg56N15 vs → ∀ v ∈ vs, deg56N15Ok v
+  | [], _h => by
+      intro v hv
+      cases hv
+  | v :: vs, h => by
+      intro v' hv'
+      have h' : deg56N15Ok v ∧ AllOkDeg56N15 vs := h
+      cases h' with
+      | intro hv hvs =>
+          have hv' : v' = v ∨ v' ∈ vs := by
+            simpa [List.mem_cons] using hv'
+          cases hv' with
+          | inl hEq =>
+              simpa [hEq] using hv
+          | inr hMem =>
+              exact AllOkDeg56N15.forall_mem hvs v' hMem
+
+lemma deg56FastVectorsN15_ok :
+    AllOkDeg56N15 deg56FastVectorsN15 := by
+  native_decide
+
+lemma deg56FastVectorsN15_ok_forall :
+    ∀ v ∈ deg56FastVectorsN15, deg56N15Ok v := by
+  exact AllOkDeg56N15.forall_mem deg56FastVectorsN15_ok
+
 def deg56ShiftVectors : List DegreeVector :=
   deg56SampleVectors.filter (fun v => 9 ≤ v.n)
 
@@ -497,6 +549,48 @@ lemma deg56ShiftBalance_iff_sumLarge (v : DegreeVector) :
       (vL := (v.vL : ℚ))
       (sumLarge := v.sumLarge)
       hsumLarge)
+
+def deg56FastVectorsN19 : List DegreeVector :=
+  deg56FastVectors.filter (fun v => 19 ≤ v.n)
+
+def AllShiftSumLargeN19 : List DegreeVector → Prop
+  | [] => True
+  | v :: vs => deg56ShiftSumLargeOk v ∧ AllShiftSumLargeN19 vs
+
+instance : Decidable (AllShiftSumLargeN19 vs) := by
+  induction vs with
+  | nil =>
+      exact isTrue trivial
+  | cons v vs ih =>
+      letI : Decidable (deg56ShiftSumLargeOk v) := inferInstance
+      letI : Decidable (AllShiftSumLargeN19 vs) := ih
+      exact instDecidableAnd
+
+lemma AllShiftSumLargeN19.forall_mem :
+    ∀ {vs}, AllShiftSumLargeN19 vs → ∀ v ∈ vs, deg56ShiftSumLargeOk v
+  | [], _h => by
+      intro v hv
+      cases hv
+  | v :: vs, h => by
+      intro v' hv'
+      have h' : deg56ShiftSumLargeOk v ∧ AllShiftSumLargeN19 vs := h
+      cases h' with
+      | intro hv hvs =>
+          have hv' : v' = v ∨ v' ∈ vs := by
+            simpa [List.mem_cons] using hv'
+          cases hv' with
+          | inl hEq =>
+              simpa [hEq] using hv
+          | inr hMem =>
+              exact AllShiftSumLargeN19.forall_mem hvs v' hMem
+
+lemma deg56FastVectorsN19_shift_sumLarge :
+    AllShiftSumLargeN19 deg56FastVectorsN19 := by
+  native_decide
+
+lemma deg56FastVectorsN19_shift_sumLarge_forall :
+    ∀ v ∈ deg56FastVectorsN19, deg56ShiftSumLargeOk v := by
+  exact AllShiftSumLargeN19.forall_mem deg56FastVectorsN19_shift_sumLarge
 
 def AllBalance : List DegreeVector → Prop
   | [] => True

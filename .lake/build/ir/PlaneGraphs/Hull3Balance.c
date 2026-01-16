@@ -1,6 +1,6 @@
 // Lean compiler output
 // Module: PlaneGraphs.Hull3Balance
-// Imports: Init PlaneGraphs.Basic PlaneGraphs.Charging PlaneGraphs.DegreeCounts PlaneGraphs.DegreeVectors
+// Imports: Init PlaneGraphs.Basic PlaneGraphs.Charging PlaneGraphs.DegreeCounts PlaneGraphs.DegreeVectors PlaneGraphs.Asymptotic
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -101,6 +101,7 @@ lean_object* initialize_PlaneGraphs_Basic(uint8_t builtin, lean_object*);
 lean_object* initialize_PlaneGraphs_Charging(uint8_t builtin, lean_object*);
 lean_object* initialize_PlaneGraphs_DegreeCounts(uint8_t builtin, lean_object*);
 lean_object* initialize_PlaneGraphs_DegreeVectors(uint8_t builtin, lean_object*);
+lean_object* initialize_PlaneGraphs_Asymptotic(uint8_t builtin, lean_object*);
 static bool _G_initialized = false;
 LEAN_EXPORT lean_object* initialize_PlaneGraphs_Hull3Balance(uint8_t builtin, lean_object* w) {
 lean_object * res;
@@ -119,6 +120,9 @@ res = initialize_PlaneGraphs_DegreeCounts(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_PlaneGraphs_DegreeVectors(builtin, lean_io_mk_world());
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_PlaneGraphs_Asymptotic(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 l_PlaneGraphs_deg56__n12__a3___closed__1 = _init_l_PlaneGraphs_deg56__n12__a3___closed__1();

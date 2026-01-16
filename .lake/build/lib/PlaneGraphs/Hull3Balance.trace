@@ -3,9 +3,84 @@
    ".> LEAN_PATH=././.lake/packages/batteries/.lake/build/lib:././.lake/packages/Qq/.lake/build/lib:././.lake/packages/aesop/.lake/build/lib:././.lake/packages/proofwidgets/.lake/build/lib:././.lake/packages/Cli/.lake/build/lib:././.lake/packages/importGraph/.lake/build/lib:././.lake/packages/mathlib/.lake/build/lib:././.lake/build/lib LD_LIBRARY_PATH=././.lake/build/lib /home/jovyan/.elan/toolchains/leanprover--lean4---v4.9.0/bin/lean ././Lean/./PlaneGraphs/Hull3Balance.lean -R ././Lean/. -o ././.lake/build/lib/PlaneGraphs/Hull3Balance.olean -i ././.lake/build/lib/PlaneGraphs/Hull3Balance.ilean -c ././.lake/build/ir/PlaneGraphs/Hull3Balance.c --json",
    "level": "trace"},
   {"message":
-   "././Lean/./PlaneGraphs/Hull3Balance.lean:230:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:289:6: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"},
   {"message":
-   "././Lean/./PlaneGraphs/Hull3Balance.lean:229:7: unused variable `h`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:291:6: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:301:6: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:288:9: unused variable `hdiag'`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:392:2: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:391:7: unused variable `h`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:603:4: `Finset.card_le_of_subset` has been deprecated, use `Finset.card_le_card` instead",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:617:8: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:792:49: `Finset.card_le_of_subset` has been deprecated, use `Finset.card_le_card` instead",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:881:22: unused variable `H`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:885:19: unused variable `H`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:889:14: unused variable `H`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:911:19: unused variable `H`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:924:19: unused variable `H`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:944:5: unused variable `hG`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:1029:8: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:1036:6: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:1009:12: unused variable `S`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:1019:10: unused variable `S`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:1034:11: unused variable `hne`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:1040:14: unused variable `S`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:1059:12: unused variable `H`\nnote: this linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:1968:12: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:3223:12: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:3286:10: `pow_le_pow_of_le_left` has been deprecated, use `pow_le_pow_left` instead",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:3310:10: `pow_le_pow_of_le_left` has been deprecated, use `pow_le_pow_left` instead",
+   "level": "warning"},
+  {"message":
+   "././Lean/./PlaneGraphs/Hull3Balance.lean:3331:12: try 'simp' instead of 'simpa'\nnote: this linter can be disabled with `set_option linter.unnecessarySimpa false`",
    "level": "warning"}],
- "depHash": "7143497495324988177"}
+ "depHash": "1666182314728504728"}

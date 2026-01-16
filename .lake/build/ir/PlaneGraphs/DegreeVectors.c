@@ -141,6 +141,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__670;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1857;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2093;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3272;
+static lean_object* l_PlaneGraphs_K__deg56__n15__sample___closed__3;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1258;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1758;
 static lean_object* l_PlaneGraphs_deg56SampleVectors___closed__62;
@@ -458,6 +459,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1796;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3601;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__414;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1365;
+static lean_object* l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1___closed__1;
 static lean_object* l_PlaneGraphs_deg56SampleVectors___closed__453;
 static lean_object* l_PlaneGraphs_deg56SampleVectors___closed__227;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4968;
@@ -548,6 +550,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4869;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__110;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2190;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__398;
+LEAN_EXPORT uint8_t l_PlaneGraphs_instDecidableAllShiftSumLargeN19___lambda__1(lean_object*, lean_object*, uint8_t);
 LEAN_EXPORT lean_object* l_PlaneGraphs_DegreeVector_n___boxed(lean_object*);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1779;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4083;
@@ -733,6 +736,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4787;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__337;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1925;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3320;
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableAllShiftSumLargeN19(lean_object*);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3504;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4621;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__5217;
@@ -1436,6 +1440,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1608;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4029;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3636;
 static lean_object* l_PlaneGraphs_deg56SampleVectors___closed__209;
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableAllOkDeg56N15___lambda__1___boxed(lean_object*, lean_object*, lean_object*);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2283;
 static lean_object* l_PlaneGraphs_deg56SampleVectors___closed__109;
 static lean_object* l_PlaneGraphs_instDecidableDeg56Balance___closed__5;
@@ -1470,6 +1475,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4250;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4916;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4036;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1262;
+static lean_object* l_PlaneGraphs_instDecidableAllShiftSumLargeN19___closed__1;
 static lean_object* l___private_PlaneGraphs_DegreeVectors_0__PlaneGraphs_reprDegreeVector____x40_PlaneGraphs_DegreeVectors___hyg_50____closed__10;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__373;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2125;
@@ -2207,6 +2213,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__125;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3047;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__869;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2731;
+static lean_object* l_PlaneGraphs_K__deg56__n15__sample___closed__2;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__44;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4232;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1799;
@@ -2258,6 +2265,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3183;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2871;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3599;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4561;
+LEAN_EXPORT lean_object* l_List_filterTR_loop___at_PlaneGraphs_deg56FastVectorsN19___spec__1(lean_object*, lean_object*);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4181;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4404;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3657;
@@ -2746,6 +2754,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__380;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1444;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1936;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1767;
+LEAN_EXPORT uint8_t l_PlaneGraphs_instDecidableDeg56N15Ok(lean_object*);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4678;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__96;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__504;
@@ -2758,6 +2767,7 @@ static lean_object* l_PlaneGraphs_loadVectors___closed__6;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1398;
 static lean_object* l_PlaneGraphs_deg56SampleVectors___closed__501;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1363;
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableAllOkDeg56N15(lean_object*);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4310;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__5263;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3779;
@@ -3035,6 +3045,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4510;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__5395;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__5402;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4526;
+LEAN_EXPORT lean_object* l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1;
 static lean_object* l_PlaneGraphs_deg56SampleVectors___closed__134;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__772;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4406;
@@ -3161,6 +3172,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1880;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1348;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4981;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2153;
+LEAN_EXPORT uint8_t l_PlaneGraphs_instDecidableAllOkDeg56N15___lambda__1(lean_object*, lean_object*, uint8_t);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__124;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1774;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2348;
@@ -3459,6 +3471,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__907;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1361;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1272;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4151;
+static lean_object* l_PlaneGraphs_instDecidableAllOkDeg56N15___closed__1;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__10;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2661;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__64;
@@ -3495,6 +3508,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1537;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1309;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1025;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4624;
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableAllShiftSumLargeN19___lambda__1___boxed(lean_object*, lean_object*, lean_object*);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3852;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2515;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1150;
@@ -3797,6 +3811,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__684;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4997;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__655;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2553;
+LEAN_EXPORT lean_object* l_PlaneGraphs_deg56FastVectorsN19;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3088;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__621;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4171;
@@ -4810,6 +4825,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1327;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__420;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4115;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2402;
+static lean_object* l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1___closed__1;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2990;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3196;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2380;
@@ -4930,6 +4946,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__186;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4148;
 static lean_object* l_PlaneGraphs_parseVectorList___closed__2;
 static lean_object* l_PlaneGraphs_deg56SampleVectors___closed__303;
+LEAN_EXPORT lean_object* l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1378;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4399;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3529;
@@ -5007,6 +5024,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__5311;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3154;
 static lean_object* l_PlaneGraphs_loadVectors___closed__7;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1104;
+LEAN_EXPORT lean_object* l_List_filterTR_loop___at_PlaneGraphs_deg56FastVectorsN15___spec__1(lean_object*, lean_object*);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__981;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2103;
 lean_object* l_List_reverse___rarg(lean_object*);
@@ -5350,6 +5368,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3535;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4249;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4137;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3827;
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableDeg56N15Ok___boxed(lean_object*);
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3026;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__370;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3987;
@@ -5563,6 +5582,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1333;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2446;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__145;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4413;
+static lean_object* l_PlaneGraphs_K__deg56__n15__sample___closed__1;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__726;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__272;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4975;
@@ -5687,6 +5707,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__3836;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1864;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1257;
 static lean_object* l_PlaneGraphs_instDecidableDeg56N12SumLargeOk___closed__3;
+LEAN_EXPORT lean_object* l_PlaneGraphs_deg56FastVectorsN15;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1195;
 static lean_object* l_PlaneGraphs_instDecidableDeg56ShiftSumLargeOk___closed__2;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__4812;
@@ -5777,6 +5798,7 @@ static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1776;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1874;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1643;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1965;
+LEAN_EXPORT lean_object* l_PlaneGraphs_K__deg56__n15__sample;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1692;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__1868;
 static lean_object* l_PlaneGraphs_deg56FastVectors___closed__2597;
@@ -93744,6 +93766,89 @@ x_3 = l_List_filterTR_loop___at_PlaneGraphs_deg56FastVectorsN12___spec__1(x_2, x
 return x_3;
 }
 }
+LEAN_EXPORT lean_object* l_List_filterTR_loop___at_PlaneGraphs_deg56FastVectorsN15___spec__1(lean_object* x_1, lean_object* x_2) {
+_start:
+{
+if (lean_obj_tag(x_1) == 0)
+{
+lean_object* x_3; 
+x_3 = l_List_reverse___rarg(x_2);
+return x_3;
+}
+else
+{
+uint8_t x_4; 
+x_4 = !lean_is_exclusive(x_1);
+if (x_4 == 0)
+{
+lean_object* x_5; lean_object* x_6; lean_object* x_7; lean_object* x_8; uint8_t x_9; 
+x_5 = lean_ctor_get(x_1, 0);
+x_6 = lean_ctor_get(x_1, 1);
+x_7 = l_PlaneGraphs_DegreeVector_n(x_5);
+x_8 = lean_unsigned_to_nat(15u);
+x_9 = lean_nat_dec_le(x_8, x_7);
+lean_dec(x_7);
+if (x_9 == 0)
+{
+lean_free_object(x_1);
+lean_dec(x_5);
+x_1 = x_6;
+goto _start;
+}
+else
+{
+lean_ctor_set(x_1, 1, x_2);
+{
+lean_object* _tmp_0 = x_6;
+lean_object* _tmp_1 = x_1;
+x_1 = _tmp_0;
+x_2 = _tmp_1;
+}
+goto _start;
+}
+}
+else
+{
+lean_object* x_12; lean_object* x_13; lean_object* x_14; lean_object* x_15; uint8_t x_16; 
+x_12 = lean_ctor_get(x_1, 0);
+x_13 = lean_ctor_get(x_1, 1);
+lean_inc(x_13);
+lean_inc(x_12);
+lean_dec(x_1);
+x_14 = l_PlaneGraphs_DegreeVector_n(x_12);
+x_15 = lean_unsigned_to_nat(15u);
+x_16 = lean_nat_dec_le(x_15, x_14);
+lean_dec(x_14);
+if (x_16 == 0)
+{
+lean_dec(x_12);
+x_1 = x_13;
+goto _start;
+}
+else
+{
+lean_object* x_18; 
+x_18 = lean_alloc_ctor(1, 2, 0);
+lean_ctor_set(x_18, 0, x_12);
+lean_ctor_set(x_18, 1, x_2);
+x_1 = x_13;
+x_2 = x_18;
+goto _start;
+}
+}
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_deg56FastVectorsN15() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = lean_box(0);
+x_2 = l_PlaneGraphs_deg56FastVectors;
+x_3 = l_List_filterTR_loop___at_PlaneGraphs_deg56FastVectorsN15___spec__1(x_2, x_1);
+return x_3;
+}
+}
 LEAN_EXPORT uint8_t l_PlaneGraphs_instDecidableDeg56N12Ok(lean_object* x_1) {
 _start:
 {
@@ -94019,6 +94124,72 @@ x_3 = lean_box(x_2);
 return x_3;
 }
 }
+static lean_object* _init_l_PlaneGraphs_K__deg56__n15__sample___closed__1() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; 
+x_1 = lean_unsigned_to_nat(2304u);
+x_2 = l_Nat_cast___at_Rat_instOfNat___spec__1(x_1);
+return x_2;
+}
+}
+static lean_object* _init_l_PlaneGraphs_K__deg56__n15__sample___closed__2() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; 
+x_1 = lean_unsigned_to_nat(157u);
+x_2 = l_Nat_cast___at_Rat_instOfNat___spec__1(x_1);
+return x_2;
+}
+}
+static lean_object* _init_l_PlaneGraphs_K__deg56__n15__sample___closed__3() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_PlaneGraphs_K__deg56__n15__sample___closed__1;
+x_2 = l_PlaneGraphs_K__deg56__n15__sample___closed__2;
+x_3 = l_Rat_div(x_1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_PlaneGraphs_K__deg56__n15__sample() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_K__deg56__n15__sample___closed__3;
+return x_1;
+}
+}
+LEAN_EXPORT uint8_t l_PlaneGraphs_instDecidableDeg56N15Ok(lean_object* x_1) {
+_start:
+{
+lean_object* x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; lean_object* x_6; lean_object* x_7; lean_object* x_8; lean_object* x_9; lean_object* x_10; lean_object* x_11; uint8_t x_12; 
+x_2 = l_PlaneGraphs_w3__n12__sample;
+x_3 = l_PlaneGraphs_w4__n12__sample;
+x_4 = l_PlaneGraphs_w5__n12__sample;
+x_5 = l_PlaneGraphs_w6__n12__sample;
+x_6 = l_PlaneGraphs_wL__n12__sample;
+lean_inc(x_1);
+x_7 = l_PlaneGraphs_DegreeVector_charge(x_1, x_2, x_3, x_4, x_5, x_6);
+x_8 = l_PlaneGraphs_DegreeVector_n(x_1);
+lean_dec(x_1);
+x_9 = l_Nat_cast___at_Rat_instOfNat___spec__1(x_8);
+x_10 = l_PlaneGraphs_K__deg56__n15__sample;
+x_11 = l_Rat_div(x_9, x_10);
+lean_dec(x_9);
+x_12 = l_Rat_instDecidableLe(x_7, x_11);
+return x_12;
+}
+}
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableDeg56N15Ok___boxed(lean_object* x_1) {
+_start:
+{
+uint8_t x_2; lean_object* x_3; 
+x_2 = l_PlaneGraphs_instDecidableDeg56N15Ok(x_1);
+x_3 = lean_box(x_2);
+return x_3;
+}
+}
 LEAN_EXPORT uint8_t l_PlaneGraphs_instDecidableDeg56N12BalanceSimpleOk(lean_object* x_1) {
 _start:
 {
@@ -94182,6 +94353,76 @@ _start:
 {
 lean_object* x_1; 
 x_1 = l_PlaneGraphs_deg56FastVectorsN12__balance___nativeDecide__1___closed__1;
+return x_1;
+}
+}
+LEAN_EXPORT uint8_t l_PlaneGraphs_instDecidableAllOkDeg56N15___lambda__1(lean_object* x_1, lean_object* x_2, uint8_t x_3) {
+_start:
+{
+uint8_t x_4; 
+x_4 = l_PlaneGraphs_instDecidableDeg56N15Ok(x_1);
+if (x_4 == 0)
+{
+uint8_t x_5; 
+x_5 = 0;
+return x_5;
+}
+else
+{
+return x_3;
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_instDecidableAllOkDeg56N15___closed__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = lean_alloc_closure((void*)(l_PlaneGraphs_instDecidableAllOkDeg56N15___lambda__1___boxed), 3, 0);
+return x_1;
+}
+}
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableAllOkDeg56N15(lean_object* x_1) {
+_start:
+{
+uint8_t x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; 
+x_2 = 1;
+x_3 = l_PlaneGraphs_instDecidableAllOkDeg56N15___closed__1;
+x_4 = lean_box(x_2);
+x_5 = l_List_rec____x40_Mathlib_Util_CompileInductive___hyg_3251____rarg(x_4, x_3, x_1);
+lean_dec(x_4);
+return x_5;
+}
+}
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableAllOkDeg56N15___lambda__1___boxed(lean_object* x_1, lean_object* x_2, lean_object* x_3) {
+_start:
+{
+uint8_t x_4; uint8_t x_5; lean_object* x_6; 
+x_4 = lean_unbox(x_3);
+lean_dec(x_3);
+x_5 = l_PlaneGraphs_instDecidableAllOkDeg56N15___lambda__1(x_1, x_2, x_4);
+lean_dec(x_2);
+x_6 = lean_box(x_5);
+return x_6;
+}
+}
+static lean_object* _init_l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1___closed__1() {
+_start:
+{
+uint8_t x_1; lean_object* x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; 
+x_1 = 1;
+x_2 = l_PlaneGraphs_instDecidableAllOkDeg56N15___closed__1;
+x_3 = l_PlaneGraphs_deg56FastVectorsN15;
+x_4 = lean_box(x_1);
+x_5 = l_List_rec____x40_Mathlib_Util_CompileInductive___hyg_3251____rarg(x_4, x_2, x_3);
+lean_dec(x_4);
+return x_5;
+}
+}
+static lean_object* _init_l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1___closed__1;
 return x_1;
 }
 }
@@ -94550,6 +94791,159 @@ uint8_t x_2; lean_object* x_3;
 x_2 = l_PlaneGraphs_instDecidableDeg56ShiftSumLargeOk(x_1);
 x_3 = lean_box(x_2);
 return x_3;
+}
+}
+LEAN_EXPORT lean_object* l_List_filterTR_loop___at_PlaneGraphs_deg56FastVectorsN19___spec__1(lean_object* x_1, lean_object* x_2) {
+_start:
+{
+if (lean_obj_tag(x_1) == 0)
+{
+lean_object* x_3; 
+x_3 = l_List_reverse___rarg(x_2);
+return x_3;
+}
+else
+{
+uint8_t x_4; 
+x_4 = !lean_is_exclusive(x_1);
+if (x_4 == 0)
+{
+lean_object* x_5; lean_object* x_6; lean_object* x_7; lean_object* x_8; uint8_t x_9; 
+x_5 = lean_ctor_get(x_1, 0);
+x_6 = lean_ctor_get(x_1, 1);
+x_7 = l_PlaneGraphs_DegreeVector_n(x_5);
+x_8 = lean_unsigned_to_nat(19u);
+x_9 = lean_nat_dec_le(x_8, x_7);
+lean_dec(x_7);
+if (x_9 == 0)
+{
+lean_free_object(x_1);
+lean_dec(x_5);
+x_1 = x_6;
+goto _start;
+}
+else
+{
+lean_ctor_set(x_1, 1, x_2);
+{
+lean_object* _tmp_0 = x_6;
+lean_object* _tmp_1 = x_1;
+x_1 = _tmp_0;
+x_2 = _tmp_1;
+}
+goto _start;
+}
+}
+else
+{
+lean_object* x_12; lean_object* x_13; lean_object* x_14; lean_object* x_15; uint8_t x_16; 
+x_12 = lean_ctor_get(x_1, 0);
+x_13 = lean_ctor_get(x_1, 1);
+lean_inc(x_13);
+lean_inc(x_12);
+lean_dec(x_1);
+x_14 = l_PlaneGraphs_DegreeVector_n(x_12);
+x_15 = lean_unsigned_to_nat(19u);
+x_16 = lean_nat_dec_le(x_15, x_14);
+lean_dec(x_14);
+if (x_16 == 0)
+{
+lean_dec(x_12);
+x_1 = x_13;
+goto _start;
+}
+else
+{
+lean_object* x_18; 
+x_18 = lean_alloc_ctor(1, 2, 0);
+lean_ctor_set(x_18, 0, x_12);
+lean_ctor_set(x_18, 1, x_2);
+x_1 = x_13;
+x_2 = x_18;
+goto _start;
+}
+}
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_deg56FastVectorsN19() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = lean_box(0);
+x_2 = l_PlaneGraphs_deg56FastVectors;
+x_3 = l_List_filterTR_loop___at_PlaneGraphs_deg56FastVectorsN19___spec__1(x_2, x_1);
+return x_3;
+}
+}
+LEAN_EXPORT uint8_t l_PlaneGraphs_instDecidableAllShiftSumLargeN19___lambda__1(lean_object* x_1, lean_object* x_2, uint8_t x_3) {
+_start:
+{
+uint8_t x_4; 
+x_4 = l_PlaneGraphs_instDecidableDeg56ShiftSumLargeOk(x_1);
+if (x_4 == 0)
+{
+uint8_t x_5; 
+x_5 = 0;
+return x_5;
+}
+else
+{
+return x_3;
+}
+}
+}
+static lean_object* _init_l_PlaneGraphs_instDecidableAllShiftSumLargeN19___closed__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = lean_alloc_closure((void*)(l_PlaneGraphs_instDecidableAllShiftSumLargeN19___lambda__1___boxed), 3, 0);
+return x_1;
+}
+}
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableAllShiftSumLargeN19(lean_object* x_1) {
+_start:
+{
+uint8_t x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; 
+x_2 = 1;
+x_3 = l_PlaneGraphs_instDecidableAllShiftSumLargeN19___closed__1;
+x_4 = lean_box(x_2);
+x_5 = l_List_rec____x40_Mathlib_Util_CompileInductive___hyg_3251____rarg(x_4, x_3, x_1);
+lean_dec(x_4);
+return x_5;
+}
+}
+LEAN_EXPORT lean_object* l_PlaneGraphs_instDecidableAllShiftSumLargeN19___lambda__1___boxed(lean_object* x_1, lean_object* x_2, lean_object* x_3) {
+_start:
+{
+uint8_t x_4; uint8_t x_5; lean_object* x_6; 
+x_4 = lean_unbox(x_3);
+lean_dec(x_3);
+x_5 = l_PlaneGraphs_instDecidableAllShiftSumLargeN19___lambda__1(x_1, x_2, x_4);
+lean_dec(x_2);
+x_6 = lean_box(x_5);
+return x_6;
+}
+}
+static lean_object* _init_l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1___closed__1() {
+_start:
+{
+uint8_t x_1; lean_object* x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; 
+x_1 = 1;
+x_2 = l_PlaneGraphs_instDecidableAllShiftSumLargeN19___closed__1;
+x_3 = l_PlaneGraphs_deg56FastVectorsN19;
+x_4 = lean_box(x_1);
+x_5 = l_List_rec____x40_Mathlib_Util_CompileInductive___hyg_3251____rarg(x_4, x_2, x_3);
+lean_dec(x_4);
+return x_5;
+}
+}
+static lean_object* _init_l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1() {
+_start:
+{
+lean_object* x_1; 
+x_1 = l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1___closed__1;
+return x_1;
 }
 }
 LEAN_EXPORT uint8_t l_PlaneGraphs_instDecidableAllBalance___lambda__1(lean_object* x_1, lean_object* x_2, uint8_t x_3) {
@@ -106734,6 +107128,8 @@ l_PlaneGraphs_deg56FastVectors__not__linear___nativeDecide__1___closed__3 = _ini
 l_PlaneGraphs_deg56FastVectors__not__linear___nativeDecide__1 = _init_l_PlaneGraphs_deg56FastVectors__not__linear___nativeDecide__1();
 l_PlaneGraphs_deg56FastVectorsN12 = _init_l_PlaneGraphs_deg56FastVectorsN12();
 lean_mark_persistent(l_PlaneGraphs_deg56FastVectorsN12);
+l_PlaneGraphs_deg56FastVectorsN15 = _init_l_PlaneGraphs_deg56FastVectorsN15();
+lean_mark_persistent(l_PlaneGraphs_deg56FastVectorsN15);
 l_PlaneGraphs_instDecidableDeg56N12LinearOk___closed__1 = _init_l_PlaneGraphs_instDecidableDeg56N12LinearOk___closed__1();
 lean_mark_persistent(l_PlaneGraphs_instDecidableDeg56N12LinearOk___closed__1);
 l_PlaneGraphs_instDecidableDeg56N12LinearOk___closed__2 = _init_l_PlaneGraphs_instDecidableDeg56N12LinearOk___closed__2();
@@ -106754,6 +107150,14 @@ l_PlaneGraphs_instDecidableDeg56N12SumLargeOk___closed__3 = _init_l_PlaneGraphs_
 lean_mark_persistent(l_PlaneGraphs_instDecidableDeg56N12SumLargeOk___closed__3);
 l_PlaneGraphs_instDecidableDeg56N12SumLargeOk___closed__4 = _init_l_PlaneGraphs_instDecidableDeg56N12SumLargeOk___closed__4();
 lean_mark_persistent(l_PlaneGraphs_instDecidableDeg56N12SumLargeOk___closed__4);
+l_PlaneGraphs_K__deg56__n15__sample___closed__1 = _init_l_PlaneGraphs_K__deg56__n15__sample___closed__1();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__n15__sample___closed__1);
+l_PlaneGraphs_K__deg56__n15__sample___closed__2 = _init_l_PlaneGraphs_K__deg56__n15__sample___closed__2();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__n15__sample___closed__2);
+l_PlaneGraphs_K__deg56__n15__sample___closed__3 = _init_l_PlaneGraphs_K__deg56__n15__sample___closed__3();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__n15__sample___closed__3);
+l_PlaneGraphs_K__deg56__n15__sample = _init_l_PlaneGraphs_K__deg56__n15__sample();
+lean_mark_persistent(l_PlaneGraphs_K__deg56__n15__sample);
 l_PlaneGraphs_instDecidableAllOkDeg56N12___closed__1 = _init_l_PlaneGraphs_instDecidableAllOkDeg56N12___closed__1();
 lean_mark_persistent(l_PlaneGraphs_instDecidableAllOkDeg56N12___closed__1);
 l_PlaneGraphs_deg56FastVectorsN12__ok___nativeDecide__1___closed__1 = _init_l_PlaneGraphs_deg56FastVectorsN12__ok___nativeDecide__1___closed__1();
@@ -106768,6 +107172,12 @@ l_PlaneGraphs_deg56FastVectorsN12__balance___nativeDecide__1___closed__1 = _init
 lean_mark_persistent(l_PlaneGraphs_deg56FastVectorsN12__balance___nativeDecide__1___closed__1);
 l_PlaneGraphs_deg56FastVectorsN12__balance___nativeDecide__1 = _init_l_PlaneGraphs_deg56FastVectorsN12__balance___nativeDecide__1();
 lean_mark_persistent(l_PlaneGraphs_deg56FastVectorsN12__balance___nativeDecide__1);
+l_PlaneGraphs_instDecidableAllOkDeg56N15___closed__1 = _init_l_PlaneGraphs_instDecidableAllOkDeg56N15___closed__1();
+lean_mark_persistent(l_PlaneGraphs_instDecidableAllOkDeg56N15___closed__1);
+l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1___closed__1 = _init_l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1___closed__1();
+lean_mark_persistent(l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1___closed__1);
+l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1 = _init_l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1();
+lean_mark_persistent(l_PlaneGraphs_deg56FastVectorsN15__ok___nativeDecide__1);
 l_PlaneGraphs_deg56ShiftVectors = _init_l_PlaneGraphs_deg56ShiftVectors();
 lean_mark_persistent(l_PlaneGraphs_deg56ShiftVectors);
 l_PlaneGraphs_instDecidableDeg56ShiftBalance___closed__1 = _init_l_PlaneGraphs_instDecidableDeg56ShiftBalance___closed__1();
@@ -106784,6 +107194,14 @@ l_PlaneGraphs_instDecidableDeg56ShiftSumLargeOk___closed__1 = _init_l_PlaneGraph
 lean_mark_persistent(l_PlaneGraphs_instDecidableDeg56ShiftSumLargeOk___closed__1);
 l_PlaneGraphs_instDecidableDeg56ShiftSumLargeOk___closed__2 = _init_l_PlaneGraphs_instDecidableDeg56ShiftSumLargeOk___closed__2();
 lean_mark_persistent(l_PlaneGraphs_instDecidableDeg56ShiftSumLargeOk___closed__2);
+l_PlaneGraphs_deg56FastVectorsN19 = _init_l_PlaneGraphs_deg56FastVectorsN19();
+lean_mark_persistent(l_PlaneGraphs_deg56FastVectorsN19);
+l_PlaneGraphs_instDecidableAllShiftSumLargeN19___closed__1 = _init_l_PlaneGraphs_instDecidableAllShiftSumLargeN19___closed__1();
+lean_mark_persistent(l_PlaneGraphs_instDecidableAllShiftSumLargeN19___closed__1);
+l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1___closed__1 = _init_l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1___closed__1();
+lean_mark_persistent(l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1___closed__1);
+l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1 = _init_l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1();
+lean_mark_persistent(l_PlaneGraphs_deg56FastVectorsN19__shift__sumLarge___nativeDecide__1);
 l_PlaneGraphs_instDecidableAllBalance___closed__1 = _init_l_PlaneGraphs_instDecidableAllBalance___closed__1();
 lean_mark_persistent(l_PlaneGraphs_instDecidableAllBalance___closed__1);
 l_PlaneGraphs_deg56ShiftVectors__balance___nativeDecide__1___closed__1 = _init_l_PlaneGraphs_deg56ShiftVectors__balance___nativeDecide__1___closed__1();

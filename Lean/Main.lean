@@ -12,6 +12,7 @@ def K_deg34_cert : ℚ := (exampleCertificate.getQ? "K_deg34").getD 0
 def K_deg56_sample_main : ℚ := K_deg56_sample
 def K_deg56_shift_sample_main : ℚ := K_deg56_shift_sample
 def K_deg56_n12_sample_main : ℚ := K_deg56_n12_sample
+def K_deg56_n15_sample_main : ℚ := K_deg56_n15_sample
 
 lemma K_deg34_cert_pos : 0 < K_deg34_cert := by
   simp [K_deg34_cert, exampleCertificate_getQ_deg34]
@@ -24,6 +25,9 @@ lemma K_deg56_shift_sample_main_pos : 0 < K_deg56_shift_sample_main := by
 
 lemma K_deg56_n12_sample_main_pos : 0 < K_deg56_n12_sample_main := by
   simpa [K_deg56_n12_sample_main] using K_deg56_n12_sample_pos
+
+lemma K_deg56_n15_sample_main_pos : 0 < K_deg56_n15_sample_main := by
+  simpa [K_deg56_n15_sample_main] using K_deg56_n15_sample_pos
 
 theorem counterexample_12_15_with_hull (_h : HullSize trianglePoints ≤ H) :
     (pg trianglePoints : ℚ) < (243 / 20 : ℚ) ^ (3 : ℕ) := by
@@ -256,12 +260,360 @@ theorem main_lower_bound_deg56_n12_hull3_class
         avgIso P ≤ (n : ℚ) / K_deg56_n12_sample_main := by
     intro n hn' P hP
     have hn12 : 12 ≤ n := le_trans hN hn'
-    let T := hull3_triangulation_exists P (hHull hP)
-    have hbound := avgIso_le_deg56_n12_hull3_charge (T := T) hn12
+    have hbound := avgIso_le_deg56_n12_hull3_charge (P := P) (hHull := hHull hP) hn12
     simpa [K_deg56_n12_sample_main] using hbound
   exact pg_min_class_shifted (K := K_deg56_n12_sample_main)
     (hK := K_deg56_n12_sample_main_pos) (C := C) (hgood := hgood)
     (hdel := hdel) (N := N) (havg := havg) (n := n) hn
+
+theorem main_lower_bound_deg56_n15_hull3_class
+    (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
+    (hdel : ClosedUnderDelete C) (N : ℕ) (hN : 15 ≤ N)
+    (hHull : ∀ {n} {P : PointSet n}, C n P → HullSize P = 3) :
+    ∀ {n}, n ≥ N →
+      (pg_min_class C hgood n : ℚ) ≥
+        (pg_min_class C hgood N : ℚ) * K_deg56_n15_sample_main ^ (n - N) := by
+  intro n hn
+  have havg :
+      ∀ {n}, n ≥ N → ∀ (P : PointSet n), C n P →
+        avgIso P ≤ (n : ℚ) / K_deg56_n15_sample_main := by
+    intro n hn' P hP
+    have hn15 : 15 ≤ n := le_trans hN hn'
+    have hbound := avgIso_le_deg56_n15_hull3_charge (P := P) (hHull := hHull hP) hn15
+    simpa [K_deg56_n15_sample_main] using hbound
+  exact pg_min_class_shifted (K := K_deg56_n15_sample_main)
+    (hK := K_deg56_n15_sample_main_pos) (C := C) (hgood := hgood)
+    (hdel := hdel) (N := N) (havg := havg) (n := n) hn
+
+theorem main_lower_bound_hull3_n15_pow {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 15) :
+    (pg P : ℚ) ≥ K_deg56_n15_sample_main ^ (n - 15) := by
+  simpa [K_deg56_n15_sample_main] using
+    (pg_hull3_pow_closed_n15 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_n15_explicit {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 15) :
+    (pg P : ℚ) ≥
+      (K_deg56_n15_sample_main ^ n) / (K_deg56_n15_sample_main ^ 15) := by
+  simpa [K_deg56_n15_sample_main] using
+    (pg_hull3_explicit_closed_n15 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_n15_explicit_all {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) :
+    (pg P : ℚ) ≥
+      (K_deg56_n15_sample_main ^ n) / (K_deg56_n15_sample_main ^ 15) := by
+  simpa [K_deg56_n15_sample_main] using
+    (pg_hull3_explicit_closed_n15_all (n := n) (P := P) hHull)
+
+theorem main_lower_bound_hull3_n12_explicit_all {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) :
+    (pg P : ℚ) ≥
+      (K_deg56_n12_sample_main ^ n) / (K_deg56_n12_sample_main ^ 12) := by
+  simpa [K_deg56_n12_sample_main] using
+    (pg_hull3_explicit_closed_all (n := n) (P := P) hHull)
+
+theorem main_lower_bound_hull3_n15_pow_14 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 15) :
+    (pg P : ℚ) ≥ (14 : ℚ) ^ (n - 15) := by
+  simpa using (pg_hull3_pow_14_closed (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_pow_8 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) :
+    (pg P : ℚ) ≥ (8 : ℚ) ^ n := by
+  simpa using (pg_hull3_pow_8_closed (n := n) (P := P) hHull)
+
+theorem main_lower_bound_hull3_shift_n19_pow {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ K_deg56_shift_sample_main ^ (n - 19) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_pow_shift_closed_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_pow_all {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) :
+    (pg P : ℚ) ≥ K_deg56_shift_sample_main ^ (n - 19) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_pow_shift_closed_all (n := n) (P := P) hHull)
+
+theorem main_lower_bound_hull3_shift_n19_explicit {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (K_deg56_shift_sample_main ^ 19) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_closed_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_explicit_all {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) :
+    (pg P : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (K_deg56_shift_sample_main ^ 19) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_closed_all (n := n) (P := P) hHull)
+
+theorem main_lower_bound_hull3_shift_poly_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / ((n : ℚ) ^ 19) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly18_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / ((n : ℚ) ^ 18) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly18_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly17_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (4 * (n : ℚ) ^ 17) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly17_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly16_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (58 * (n : ℚ) ^ 16) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly16_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly15_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (1088 * (n : ℚ) ^ 15) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly15_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly14_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (20666 * (n : ℚ) ^ 14) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly14_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly13_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (392648 * (n : ℚ) ^ 13) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly13_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly12_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (7460303 * (n : ℚ) ^ 12) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly12_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly11_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (141745749 * (n : ℚ) ^ 11) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly11_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly10_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (2693169219 * (n : ℚ) ^ 10) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly10_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly9_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (51170215145 * (n : ℚ) ^ 9) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly9_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly8_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (972234087747 * (n : ℚ) ^ 8) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly8_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly7_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (18472447667193 * (n : ℚ) ^ 7) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly7_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly6_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (350976505676660 * (n : ℚ) ^ 6) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly6_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly5_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (6668553607856535 * (n : ℚ) ^ 5) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly5_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly4_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (126702518549274155 * (n : ℚ) ^ 4) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly4_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly3_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (2407347852436208928 * (n : ℚ) ^ 3) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly3_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly2_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (45739609196287969624 * (n : ℚ) ^ 2) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly2_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_poly1_n19 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (K_deg56_shift_sample_main ^ n) / (869052574729471422843 * (n : ℚ)) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_hull3_explicit_shift_poly1_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_class_shift_poly_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / ((n : ℚ) ^ 19) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly18_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / ((n : ℚ) ^ 18) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly18_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly17_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (4 * (n : ℚ) ^ 17) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly17_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly16_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (58 * (n : ℚ) ^ 16) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly16_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly15_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (1088 * (n : ℚ) ^ 15) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly15_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly14_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (20666 * (n : ℚ) ^ 14) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly14_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly13_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (392648 * (n : ℚ) ^ 13) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly13_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly12_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (7460303 * (n : ℚ) ^ 12) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly12_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly11_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (141745749 * (n : ℚ) ^ 11) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly11_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly10_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (2693169219 * (n : ℚ) ^ 10) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly10_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly9_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (51170215145 * (n : ℚ) ^ 9) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly9_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly8_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (972234087747 * (n : ℚ) ^ 8) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly8_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly7_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (18472447667193 * (n : ℚ) ^ 7) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly7_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly6_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (350976505676660 * (n : ℚ) ^ 6) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly6_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly5_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (6668553607856535 * (n : ℚ) ^ 5) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly5_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly4_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (126702518549274155 * (n : ℚ) ^ 4) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly4_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly3_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (2407347852436208928 * (n : ℚ) ^ 3) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly3_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly2_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (45739609196287969624 * (n : ℚ) ^ 2) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly2_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_class_shift_poly1_n19 {n : ℕ}
+    (hgood : ∀ n, ∃ P, Hull3Class n P) (hn : n ≥ 19) :
+    (pg_min_class Hull3Class hgood n : ℚ) ≥
+      (K_deg56_shift_sample_main ^ n) / (869052574729471422843 * (n : ℚ)) := by
+  simpa [K_deg56_shift_sample_main] using
+    (pg_min_class_hull3_explicit_shift_poly1_n19 (n := n) hgood hn)
+
+theorem main_lower_bound_hull3_shift_n19_pow_59_4 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ (59 / 4 : ℚ) ^ (n - 19) := by
+  simpa using (pg_hull3_pow_59_4_closed_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_pow_59_4_all {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) :
+    (pg P : ℚ) ≥ (59 / 4 : ℚ) ^ (n - 19) := by
+  simpa using (pg_hull3_pow_59_4_closed_all (n := n) (P := P) hHull)
+
+theorem main_lower_bound_hull3_shift_n19_explicit_59_4 {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) (hn : n ≥ 19) :
+    (pg P : ℚ) ≥ ((59 / 4 : ℚ) ^ n) / ((59 / 4 : ℚ) ^ 19) := by
+  simpa using (pg_hull3_explicit_59_4_closed_n19 (n := n) (P := P) hHull hn)
+
+theorem main_lower_bound_hull3_shift_explicit_59_4_all {n : ℕ} {P : PointSet n}
+    (hHull : HullSize P = 3) :
+    (pg P : ℚ) ≥ ((59 / 4 : ℚ) ^ n) / ((59 / 4 : ℚ) ^ 19) := by
+  simpa using (pg_hull3_explicit_59_4_closed_all (n := n) (P := P) hHull)
 
 theorem main_lower_bound_deg56_shift_balance
     (C : ∀ n, PointSet n → Prop) (hgood : ∀ n, ∃ P, C n P)
