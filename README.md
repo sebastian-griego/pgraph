@@ -25,6 +25,8 @@ Python tooling
 - `scripts/solve_rational.py`: solve the weight LP and snap-fit an exact rational
   certificate for the mined degree vectors (supports `--min-n/--max-n` to
   explore shifted bounds).
+- `scripts/verify_certificate.py`: verify a JSON certificate against mined
+  degree vectors using exact rational arithmetic.
 - `scripts/search_degree_inequalities.py`: search for simple linear inequalities
   satisfied by mined degree vectors, to suggest candidate geometric constraints.
 - `scripts/check_linear_bound.py`: validate linear degree inequalities against

@@ -24,3 +24,9 @@ jobs:
 
       - name: Run tests
         run: python -m pytest -q
+
+      - name: Verify sample certificate
+        run: >
+          python scripts/verify_certificate.py
+          --certificate certificates/deg56_sample.json
+          --data data/degree_vectors.json
