@@ -28,3 +28,12 @@ Python helper
 -------------
 Use `scripts/export_certificate.py` to generate a certificate from exact
 rational parameters.
+
+Use `scripts/verify_certificate.py` to audit a certificate against mined degree
+vectors without rerunning the LP search:
+
+```
+python scripts/verify_certificate.py \
+  --certificate certificates/deg56_sample.json \
+  --data data/degree_vectors.json
+```
